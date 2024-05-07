@@ -4,7 +4,19 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('barangay');
+});
+
+Route::get('/terms', function () {
+    return view('PTD/terms');
+});
+
+Route::get('/disclaimer', function () {
+    return view('PTD/disclaimer');
+});
+
+Route::get('/privacy', function () {
+    return view('PTD/privacy');
 });
 
 Route::get('/dashboard', function () {
