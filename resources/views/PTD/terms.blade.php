@@ -24,7 +24,7 @@
       <i class="bx bx-right-arrow-circle" id="close-icon"></i>
     </label>
     <nav class="nav">
-      <a href="/IT26/BARANGAY/landing_page/barangay.php" style="--i: 0">Home</a>
+    <a href="{{ URL('') }}" style="--i: 0">Home</a>
     </nav>
   </header>
 
@@ -330,19 +330,19 @@
         <div class="footer-col">
           <h4>Page</h4>
           <ul class="footer-ul">
-            <li><a href="/IT26/BARANGAY/landing_page/barangay.php">about us</a></li>
-            <li><a href="/IT26/BARANGAY/landing_page/barangay.php">our services</a></li>
-            <li><a href="/IT26/BARANGAY/landing_page/barangay.php">map</a></li>
-            <li><a href="/IT26/BARANGAY/landing_page/barangay.php">mission</a></li>
+          <li><a href="{{ URL('') }}">about us</a></li>
+            <li><a href="{{ URL('') }}">our services</a></li>
+            <li><a href="{{ URL('') }}">map</a></li>
+            <li><a href="{{ URL('') }}">mission</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>get help</h4>
           <ul class="footer-ul">
-            <li><a href="/IT26/BARANGAY/faq/faq.php">FAQ</a></li>
-          <li><a href="#term">Terms & Conditions</a></li>
-          <li><a href="/IT26/BARANGAY/disclaimer/disclaimer.php">Disclaimer</a></li>
-          <li><a href="/IT26/BARANGAY/privacy/privacy.php">privacy policy</a></li>
+          <li><a href="{{ URL('faq') }}">FAQ</a></li>
+            <li><a href="{{ URL('terms') }}">Terms & Conditions</a></li>
+            <li><a href="{{ URL('disclaimer') }}">Disclaimer</a></li>
+            <li><a href="{{ URL('privacy') }}">privacy policy</a></li>
           </ul>
         </div>
 
@@ -358,7 +358,6 @@
     </div>
   </footer>
 
-  <script src="terms.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="https://smtpjs.com/v3/smtp.js"></script>

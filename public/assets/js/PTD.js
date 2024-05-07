@@ -26,3 +26,29 @@ closes.addEventListener("click", () => {
   wrappers.classList.remove("active-popup");
 });
 
+
+function getImagePreview(event)
+{
+  var image=URL.createObjectURL(event.target.files[0]);
+  var imagediv= document.getElementById('preview');
+  var newimg=document.createElement('img');
+  imagediv.innerHTML='';
+  newimg.src=image;
+  imagediv.appendChild(newimg);
+}
+function getImagePreview1(event)
+{
+  var image=URL.createObjectURL(event.target.files[0]);
+  var imagediv= document.getElementById('preview1');
+  var newimg=document.createElement('img');
+  imagediv.innerHTML='';
+  newimg.src=image;
+  imagediv.appendChild(newimg);
+}
+
+
+
+
+
+
+  

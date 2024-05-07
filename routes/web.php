@@ -19,6 +19,35 @@ Route::get('/privacy', function () {
     return view('PTD/privacy');
 });
 
+Route::get('/faq', function () {
+    return view('PTD/faq');
+});
+
+
+
+Route::get('/bussiness', function () {
+    return view('cert/bussiness');
+});
+
+Route::get('/clearance', function () {
+    return view('cert/clearance');
+});
+
+Route::get('/ID', function () {
+    return view('cert/ID');
+});
+
+Route::get('/residence', function () {
+    return view('cert/residence');
+});
+
+Route::get('/indegency', function () {
+    return view('cert/indegency');
+});
+
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

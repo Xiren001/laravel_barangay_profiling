@@ -28,7 +28,7 @@
       <a href="#about" style="--i: 1">About</a>
       <a href="#service" style="--i: 2">Service</a>
       <a href="#map" style="--i: 3">Map</a>
-      <a href="/IT26/BARANGAY/faq/faq.php" style="--i: 4">FAQ</a>
+      <a href="{{ URL('faq') }}" style="--i: 4">FAQ</a>
     </nav>
     <div class="btn-div">
       <button class="btnLogin-popup btn-popup"><span>Login</span></button>
@@ -294,7 +294,7 @@
 
         <div class="serv-icon">
           <div class="icon-serv">
-            <a href="/IT26/BARANGAY/clearance/clearance.php"><i class='bx bx-chevron-right'></i></a>
+            <a href="{{ URL('clearance') }}"><i class='bx bx-chevron-right'></i></a>
           </div>
         </div>
 
@@ -312,7 +312,7 @@
 
         <div class="serv-icon">
           <div class="icon-serv">
-            <a href="/IT26/BARANGAY/business/bussiness.php"><i class='bx bx-chevron-right'></i></a>
+            <a href="{{ URL('bussiness') }}"><i class='bx bx-chevron-right'></i></a>
           </div>
         </div>
 
@@ -330,7 +330,7 @@
 
         <div class="serv-icon">
           <div class="icon-serv">
-            <a href="/IT26/BARANGAY/cIndigency/indegency.php"><i class='bx bx-chevron-right'></i></a>
+            <a href="{{ URL('indegency') }}"><i class='bx bx-chevron-right'></i></a>
           </div>
         </div>
 
@@ -348,7 +348,7 @@
 
         <div class="serv-icon">
           <div class="icon-serv">
-            <a href="/IT26/BARANGAY/cResidence/residence.php"><i class='bx bx-chevron-right'></i></a>
+            <a href="{{ URL('residence') }}"><i class='bx bx-chevron-right'></i></a>
           </div>
         </div>
 
@@ -366,7 +366,7 @@
 
         <div class="serv-icon">
           <div class="icon-serv">
-            <a href="/IT26/BARANGAY/cID/ID.php"><i class='bx bx-chevron-right'></i></a>
+            <a href="{{ URL('ID') }}"><i class='bx bx-chevron-right'></i></a>
           </div>
         </div>
 
@@ -424,7 +424,7 @@
         <div class="footer-col">
           <h4>get help</h4>
           <ul class="footer-ul">
-            <li><a href="/IT26/BARANGAY/faq/faq.php">FAQ</a></li>
+            <li><a href="{{ URL('faq') }}">FAQ</a></li>
             <li><a href="{{ URL('terms') }}">Terms & Conditions</a></li>
             <li><a href="{{ URL('disclaimer') }}">Disclaimer</a></li>
             <li><a href="{{ URL('privacy') }}">privacy policy</a></li>
