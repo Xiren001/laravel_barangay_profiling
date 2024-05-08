@@ -31,11 +31,41 @@
       <a href="{{ URL('faq') }}" style="--i: 4">FAQ</a>
     </nav>
     <div class="btn-div">
-      <button class="btnLogin-popup btn-popup"><span>Login</span></button>
+    @if (Route::has('login'))
+                            <nav class="-mx-3 flex flex-1 justify-end">
+                                @auth
+                                    <a
+                                        href="{{ url('/dashboard') }}"
+                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                    >
+                                        Dashboard
+                                    </a>
+                                @else
+                                    <a
+                                        href="{{ route('login') }}"
+                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                    >
+                                        Log in
+                                    </a>
+
+                                    @if (Route::has('register'))
+                                        <a
+                                            href="{{ route('register') }}"
+                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                        >
+                                            Register
+                                        </a>
+                                    @endif
+                                @endauth
+                            </nav>
+                        @endif
+      <!-- <button class="btnLogin-popup btn-popup"><span>Login</span></button> -->
       <button class="btnContact-popup btn-popup"><span>Contact us</span></button>
     </div>
   </header>
-  <div class="container-wrapper">
+
+
+  <!-- <div class="container-wrapper">
     <div class="wrapper">
       <span class="icon-close">
         <ion-icon name="close-outline"></ion-icon>
@@ -56,7 +86,7 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="container-wrapper">
     <div class="wrapper wrappers">
@@ -449,11 +479,11 @@
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="https://smtpjs.com/v3/smtp.js"></script>
   <script>
-    const wrapper = document.querySelector(".wrapper");
+    // const wrapper = document.querySelector(".wrapper");
     const wrappers = document.querySelector(".wrappers");
-    const btnPopup = document.querySelector(".btnLogin-popup");
+    // const btnPopup = document.querySelector(".btnLogin-popup");
     const btnPopupContact = document.querySelector(".btnContact-popup");
-    const iconClose = document.querySelector(".icon-close");
+    // const iconClose = document.querySelector(".icon-close");
     const closes = document.querySelector(".closes");
 
     function clearContact() {
@@ -462,17 +492,17 @@
       formContact.reset();
     }
 
-    btnPopup.addEventListener("click", () => {
-      wrapper.classList.add("active-popup");
-      wrappers.classList.remove("active-popup");
-    });
+    // btnPopup.addEventListener("click", () => {
+    //   wrapper.classList.add("active-popup");
+    //   wrappers.classList.remove("active-popup");
+    // });
     btnPopupContact.addEventListener("click", () => {
       wrappers.classList.add("active-popup");
-      wrapper.classList.remove("active-popup");
+      // wrapper.classList.remove("active-popup");
     });
-    iconClose.addEventListener("click", () => {
-      wrapper.classList.remove("active-popup");
-    });
+    // iconClose.addEventListener("click", () => {
+    //   wrapper.classList.remove("active-popup");
+    // });
     closes.addEventListener("click", () => {
       wrappers.classList.remove("active-popup");
     });
