@@ -38,3 +38,16 @@ function getImagePreview(event)
         }
     });
 });
+
+
+    // Wait for the DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the element by its ID
+        var loggedInMessage = document.getElementById('loggedInMessage');
+
+        // Set a timeout to hide the element after 3 seconds (3000 milliseconds)
+        setTimeout(function() {
+            loggedInMessage.style.display = 'none'; // Hide the element
+        }, 2000); // 2000 milliseconds = 3 seconds
+    });
+

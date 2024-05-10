@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResidentsController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('barangay');
@@ -45,6 +47,9 @@ Route::get('/indegency', function () {
     return view('cert/indegency');
 });
 
+
+Route::get('/dashboard', [ResidentsController::class, 'index'])->name('residents.index');
+Route::get('/dashboard/create', [ResidentsController::class, 'create'])->name('residents.create');
 
 
 

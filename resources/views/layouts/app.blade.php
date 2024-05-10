@@ -26,7 +26,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+         <div class=" bg-gray-100 dark:bg-gray-900">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
@@ -37,7 +37,7 @@
             </div>
         </header>
         @endif
-
+        </div>
         <!-- Page Content -->
         <main>
             {{ $slot }}
@@ -116,14 +116,18 @@
                                     <span class="link-name">Settings</span>
                                 </a>
                             </li>
+                            
                         </ul>
                     </nav>
                 </div>
                 <div class="invi-div">
                 </div>
+
+
+
                 <div class="table-wrapper">
                     <div class="table-title">
-                        <div class="row">
+                        <div class="table-head">
                             <div class="col-sm-6">
                                 <h2>Community Record</h2>
                             </div>
@@ -140,73 +144,11 @@
                     </div>
 
 
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="selectAll">
-                                        <label for="selectAll"></label>
-                                    </span>
-                                </th>
-                                <th>Firstname</th>
-                                <th>middlename</th>
-                                <th>Lastname</th>
-                                <th>Purok</th>
-                                <th>presinct_no</th>
-                                <th style="text-align: center; padding-right:25px; ">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                        <label for="checkbox1"></label>
-                                    </span>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td style="padding: 5px; display:flex; flex-direction:row; justify-content:center; align-items:center;">
-                                    <a href="#edit" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-
-                                    <a href="#delete" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-
-                                    <a href="#view" class="view" data-toggle="modal"><i class='bx bxs-show' data-toggle="tooltip" title="view">&#xE872;</i></a>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                        <label for="checkbox1"></label>
-                                    </span>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td style="padding: 5px; display:flex; flex-direction:row; justify-content:center; align-items:center;">
-                                    <a href="#edit" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-
-                                    <a href="#delete" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-
-                                    <a href="#view" class="view" data-toggle="modal"><i class='bx bxs-show' data-toggle="tooltip" title="view">&#xE872;</i></a>
-                                </td>
-
-                        </tbody>
-
-
-                    </table>
+                    
                 </div>
             </div>
         </main>
-    </div>
+    
     <script src="{{ asset('assets/js/Cdashboard.js') }}"></script>
 </body>
 
