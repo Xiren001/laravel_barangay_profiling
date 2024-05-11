@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResidentsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 
 Route::get('/', function () {
@@ -47,10 +48,14 @@ Route::get('/indegency', function () {
     return view('cert/indegency');
 });
 
-
-Route::get('/dashboard', [ResidentsController::class, 'index'])->name('residents.index');
-Route::get('/dashboard/create', [ResidentsController::class, 'create'])->name('residents.create');
-
+Route::get('/admin', [UserController::class, 'index'])->name('user.index');
+Route::group(['prefix' => 'admin/user'], function () {
+    Route::get('/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/add', [UserController::class, 'store'])->name('user.store');
+    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::post('/delete', [UserController::class, 'destroy'])->name('user.delete');
+});
 
 
 Route::get('/dashboard', function () {
