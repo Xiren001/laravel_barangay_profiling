@@ -540,9 +540,54 @@ td{
 }
 
 .py{
-    position: absolute;
+    position: fixed;
     left:  89%;
     top: 89%;
     transition: opacity 0.5s ease;
 }
 
+.contents-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1rem 0 1rem 5rem;
+    gap: 1rem;
+    row-gap: 2rem;
+    transition: .5s;
+}
+.contents-div.active {
+    padding: 2.5rem 0 1rem 2.5rem;
+    gap: 1rem;
+}
+.dashboard-content {
+    display: flex;
+    background-color: #28536b;
+    justify-content: flex-start;
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    position: relative;
+    width: 450px;
+    min-width: 400px;
+    height: 200px;
+    transition: .5s;
+}
+.dashboard-content.active {
+    width: 400px;
+    min-width: 400px;
+}
+.dashboard-content p {
+    font-size: 1em;
+    font-weight: bold;
+    color: #FBB040;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    background-color: transparent;
+    height: 30px;
+    padding: 0 10px;
+    padding-top: 5px;
+    border-radius: 10px;
+    transform: translatex(-5px);
+    z-index: 1;
+}

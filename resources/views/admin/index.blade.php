@@ -1,10 +1,7 @@
-//resources/views/admin/index.blade.php
+
 @extends('layouts.content')
 @section('main-content')
 <div class="container">
-    <h2>
-        Laravel 11 CRUD with upload image
-    </h2>
     <div class="text-end mb-5">
         <a href="{{ route('user.create') }}" class="btn btn-primary">Add New User</a>
     </div>
@@ -25,6 +22,7 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>password</th>
                 <th>Photo</th>
                 <th>Action</th>
             </thead>
@@ -33,7 +31,9 @@
                 <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $row->name }}</td>
-                    <td>{{ $row->email }}</td>
+                    <td>{{ $row->email }}</td>\
+                    <td>{{ $row->password }}</td>
+
                     <td>
                         <div class="showPhoto">
                             <div id="imagePreview" style="@if ($row->photo != '') background-image:url('{{ url('/') }}/uploads/{{ $row->photo }}')@else background-image: url('{{ url('/img/avatar.png') }}') @endif;">

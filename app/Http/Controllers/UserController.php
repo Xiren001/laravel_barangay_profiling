@@ -36,6 +36,7 @@ class UserController extends Controller
             [
                 'name' => 'required',
                 'email' => 'required|email|unique:users',
+                'password' => 'required',
                 'photo' => 'mimes:png,jpeg,jpg|max:2048',
             ]
         );
@@ -87,12 +88,14 @@ class UserController extends Controller
             [
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email,' . $id,
+                'password' => 'required',
                 'photo' => 'mimes:png,jpeg,jpg|max:2048',
             ]
         );
         $update = User::findOrFail($id);
         $update->name = $request->name;
         $update->email = $request->email;
+        $update->password = $request->password;
  
         if ($request->hasfile('photo')) {
             $filePath = public_path('uploads');

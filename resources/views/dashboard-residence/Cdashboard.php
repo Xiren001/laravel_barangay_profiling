@@ -254,3 +254,120 @@ $result = $crud->read($sql);
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-div">
+                <div class="menu">
+                    <nav class="sidebar">
+                        <div class="logo-menu">
+                            <h2 class="logo">Barangay</h2>
+                            <i class='bx bx-menu toggle-btn'></i>
+                        </div>
+
+                        <ul class="nav-list">
+                            <li class="list-item ">
+                                <a href="/IT26/BARANGAY/dashboard-1/dashboard.php">
+                                    <i class='bx bx-grid-alt'></i>
+                                    <span class="link-name">Dashboard</span>
+                                </a>
+                            </li>
+                            <hr>
+                            <div class="men-p">
+                                <p>MENU</p>
+                            </div>
+                            <li class="list-item">
+                                <a href="/IT26/BARANGAY/dashboard-residence/CdashboardPersonel.php">
+                                    <i class='bx bx-user'></i>
+                                    <span class="link-name">Personel</span>
+                                </a>
+                            </li>
+                            <li class="list-item active">
+                                <a href="/IT26/BARANGAY/dashboard-residence/CdashboardPersonel.php">
+                                    <i class='bx bx-message-square-dots'></i>
+                                    <span class="link-name">Community Record</span>
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a href="#">
+                                    <i class='bx bx-certification'></i>
+                                    <span class="link-name">Brangay Certification</span>
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a href="#">
+                                    <i class='bx bx-receipt'></i>
+                                    <span class="link-name">Certificate of Indigency</span>
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a href="#">
+                                    <i class='bx bx-id-card'></i>
+                                    <span class="link-name">Business Clearance</span>
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a href="#">
+                                    <i class='bx bx-folder'></i>
+                                    <span class="link-name">Blotter List</span>
+                                </a>
+                            </li>
+
+                            <li class="list-item">
+                                <a href="/IT26/BARANGAY/dashboard-3/dashboard.php">
+                                    <i class='bx bx-food-menu'></i>
+                                    <span class="link-name">Requested Document</span>
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a href="#">
+                                    <i class='bx bx-building-house'></i>
+                                    <span class="link-name">Household Record</span>
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a href="#">
+                                    <i class='bx bx-cog'></i>
+                                    <span class="link-name">Settings</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+                <div class="invi-div">
+                </div>
+
+
+
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="table-head">
+                            <div class="col-sm-6">
+                                <h2>Community Record</h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="#add" class="btn btn-add" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Resident</span></a>
+                            </div>
+                            <form action="" method="GET">
+                                <div class="input-group mb-3">
+                                    <input type="search" name="search" id="search" autocomplete="off" class="form-control search" placeholder="Search" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    
+                </div>
+            </div>

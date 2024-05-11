@@ -1,10 +1,17 @@
 const sidebar = document.querySelector('.sidebar');
 const invi = document.querySelector('.invi-div');
 const toggleBtn = document.querySelector('.toggle-btn');
+const condiv = document.querySelector('.contents-div');
+const dashcon = document.querySelectorAll('.dashboard-content');
 
 toggleBtn.addEventListener('click', ()=>{
     sidebar.classList.toggle('active');
     invi.classList.toggle('active');
+    condiv.classList.toggle('active');
+
+    dashcon.forEach(content => {
+        content.classList.toggle('active');
+      });
 });
 
 function getImagePreview(event)
@@ -40,14 +47,6 @@ function getImagePreview(event)
 });
 
 
-    // Wait for the DOM to be fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get the element by its ID
-        var loggedInMessage = document.getElementById('loggedInMessage');
+ 
 
-        // Set a timeout to hide the element after 3 seconds (3000 milliseconds)
-        setTimeout(function() {
-            loggedInMessage.style.display = 'none'; // Hide the element
-        }, 2000); // 2000 milliseconds = 3 seconds
-    });
 

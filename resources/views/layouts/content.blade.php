@@ -1,4 +1,4 @@
-//resources/views/layouts/content.blade.php
+
 @include('layouts.header')
  
 <body>
