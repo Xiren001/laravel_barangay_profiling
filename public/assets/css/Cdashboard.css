@@ -17,6 +17,7 @@ body {
     display: flex;
     padding: 0;
     margin: 0;
+   
 }
 
 .header {
@@ -193,6 +194,11 @@ div hr {
     min-width: 280px;
 }
 
+.roww{
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+}
 /*sample*/
 .table-wrapper {
     background: #fff;
@@ -363,7 +369,7 @@ table.table .avatar {
 }
 
 .btn-add {
-    background-color: #FBB040;
+    background-color: #FBB040 !important;
 }
 
 
@@ -537,6 +543,7 @@ td{
     border-radius:5px !important;
     padding: 5px 10px !important;
     font-size: 1.2rem !important;
+    font-size: small !important;
 }
 
 .py{
@@ -590,4 +597,19 @@ td{
     border-radius: 10px;
     transform: translatex(-5px);
     z-index: 1;
+}
+
+.showPhoto {
+    width: 51%;
+    height: 54px;
+    margin: auto;
+}
+
+.showPhoto>div {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }

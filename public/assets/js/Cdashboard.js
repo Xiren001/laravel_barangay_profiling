@@ -46,6 +46,10 @@ function getImagePreview(event)
     });
 });
 
+function deleteFunction(id) {
+  document.getElementById('delete_id').value = id;
+  $("#modalDelete").modal('show');
+}
 
  
 

@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ResidenceController;
-use App\Http\Controllers\ResidentsController;
+use App\Http\Controllers\ResidencesController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -51,12 +51,13 @@ Route::get('/indegency', function () {
 
 Route::get('/admin', [UserController::class, 'index'])->name('user.index');
 Route::group(['prefix' => 'admin/user'], function () {
-    Route::get('/create', [UserController::class, 'create'])->name('user.create');
-    Route::post('/add', [UserController::class, 'store'])->name('user.store');
-    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-    Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
-    Route::post('/delete', [UserController::class, 'destroy'])->name('user.delete');
+Route::get('/create', [UserController::class, 'create'])->name('user.create');
+Route::post('/add', [UserController::class, 'store'])->name('user.store');
+Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
+Route::post('/delete', [UserController::class, 'destroy'])->name('user.delete');
 });
+
 
 // Route::get('/residences',[ResidenceController::class, 'index']);
 // Route::get('/residences/Edit/{id}/', [ResidenceController::class, 'edit']);
