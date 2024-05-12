@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResidenceController;
 use App\Http\Controllers\ResidentsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -56,6 +57,12 @@ Route::group(['prefix' => 'admin/user'], function () {
     Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
     Route::post('/delete', [UserController::class, 'destroy'])->name('user.delete');
 });
+
+// Route::get('/residences',[ResidenceController::class, 'index']);
+// Route::get('/residences/Edit/{id}/', [ResidenceController::class, 'edit']);
+// Route::post('/residences/store',[ResidenceController::class, 'store']);
+// Route::get('/residences/Delete/{id}', [ResidenceController::class, 'destroy']);
+
 
 
 Route::get('/dashboard', function () {
