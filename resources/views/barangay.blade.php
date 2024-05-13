@@ -10,7 +10,7 @@
   <link href=" {{ asset('assets/css/barangay.css') }}" rel="stylesheet" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/307a1a6a59.js" crossorigin="anonymous"></script>
- 
+
 </head>
 
 <body>
@@ -30,41 +30,26 @@
       <a href="{{ URL('faq') }}" style="--i: 4">FAQ</a>
     </nav>
     <div class="btn-div">
-    @if (Route::has('login'))
-                            <nav class="-mx-3 flex flex-1 justify-end">
-                                @auth
-                                <div class="log">
-                                    <a
-                                        href="{{ url('/dashboard') }}"
-                                        
-                                    >
-                                        Dashboard
-                                    </a>
-                                </div>
-                                @else
+      @if (Route::has('login'))
+      <nav class="-mx-3 flex flex-1 justify-end row g-1">
+        @auth
+        <div class="log">
+          <a href="{{ url('/dashboard') }}">
+            Dashboard
+          </a>
+        </div>
+        @else
 
-                                <div class="log">
-                                    <a
-                                        href="{{ route('login') }}"
-                                       
-                                    >
-                                        Log in
-                                    </a>
-                                    </div>
+        <div class="log">
+          <a href="{{ route('login') }}">
+            Log in
+          </a>
+        </div>
 
-                                    @if (Route::has('register'))
-                                    <div class="log">
-                                        <a
-                                            href="{{ route('register') }}"
-                                          
-                                        >
-                                            Register
-                                        </a>
-                                        </div>
-                                    @endif
-                                @endauth
-                            </nav>
-                        @endif
+
+        @endauth
+      </nav>
+      @endif
       <!-- <button class="btnLogin-popup btn-popup"><span>Login</span></button> -->
       <button class="btnContact-popup btn-popup"><span>Contact us</span></button>
     </div>
@@ -129,8 +114,8 @@
     <div class="container">
       <div class="p-1 div-1">
         <div class="p-1 logo-div">
-          
-          <img  class="logo img-responsive" src="{{ URL('assets/images/LOGO.png') }}" alt="logo">
+
+          <img class="logo img-responsive" src="{{ URL('assets/images/LOGO.png') }}" alt="logo">
         </div>
 
         <div class="text-main">
@@ -464,8 +449,8 @@
             <li><a href="{{ URL('terms') }}">Terms & Conditions</a></li>
             <li><a href="{{ URL('disclaimer') }}">Disclaimer</a></li>
             <li><a href="{{ URL('privacy') }}">privacy policy</a></li>
-          
-           
+
+
           </ul>
         </div>
 

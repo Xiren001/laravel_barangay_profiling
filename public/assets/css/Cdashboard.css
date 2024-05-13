@@ -215,7 +215,7 @@ div hr {
     background: rgb(40, 83, 107);
     background: linear-gradient(90deg, rgba(40, 83, 107, 1) 41%, rgba(126, 168, 190, 1) 79%, rgba(126, 168, 190, 1) 100%);
     color: #fff;
-    padding: 16px 30px;
+    padding: 10px 0;
     margin: -20px -25px 10px;
     border-radius: 3px 3px 0 0;
    
@@ -262,6 +262,14 @@ table.table tr td {
     border-color: #e9e9e9;
     padding: 12px 15px;
     vertical-align: middle;
+   
+    font-size: small;
+    table-layout: fixed;
+}
+
+table.table tr .th,
+table.table tr .td {
+    width: 200px;
 }
 
 table.table tr th:first-child {
@@ -321,6 +329,7 @@ table.table .avatar {
     vertical-align: middle;
     margin-right: 10px;
 }
+
 
 .pagination {
     float: right;
@@ -516,6 +525,10 @@ td{
     text-transform: capitalize;
 }
 
+.custom-checkbox input{
+    border-radius: 5px;
+}
+
 .form {
     display: flex;
     flex-direction: row;
@@ -548,8 +561,8 @@ td{
 
 .py{
     position: fixed;
-    left:  89%;
-    top: 89%;
+    left:  88%;
+    top: 90%;
     transition: opacity 0.5s ease;
 }
 
@@ -600,16 +613,17 @@ td{
 }
 
 .showPhoto {
-    width: 51%;
+    width: 50%;
     height: 54px;
-    margin: auto;
+   
 }
 
 .showPhoto>div {
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: 10%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
+

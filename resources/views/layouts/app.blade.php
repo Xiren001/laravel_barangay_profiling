@@ -150,6 +150,7 @@
                 </div>
             </div>
         </div>
+
         {{ $slot }}
     </main>
 

@@ -64,6 +64,9 @@ Route::post('/delete', [UserController::class, 'destroy'])->name('user.delete');
 // Route::post('/residences/store',[ResidenceController::class, 'store']);
 // Route::get('/residences/Delete/{id}', [ResidenceController::class, 'destroy']);
 
+Route::get('/residences', [ResidencesController::class, 'index'])->name('residence.index');
+Route::get('/residences/create', [ResidencesController::class, 'create'])->name('residence.create');
+Route::post('/residences', [ResidencesController::class, 'store'])->name('residence.store');
 
 
 Route::get('/dashboard', function () {

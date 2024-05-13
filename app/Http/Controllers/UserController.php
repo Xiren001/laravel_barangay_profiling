@@ -51,7 +51,7 @@ class UserController extends Controller
         if ($request->hasfile('photo')) {
             $file = $request->file('photo');
             $file_name = time() . $file->getClientOriginalName();
- 
+
             $file->move($filePath, $file_name);
             $insert->photo = $file_name;
         }

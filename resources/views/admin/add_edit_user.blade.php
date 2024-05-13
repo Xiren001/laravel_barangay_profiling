@@ -14,6 +14,14 @@
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
+
+                <!-- <div class="form-group col-md-12 mb-3">
+                    <label for="">usertype</label>
+                    <input class="form-control" type="text" name="usertype" placeholder="Enter usertype" value="@if (isset($edit->id)) {{ $edit->usertype }}@else {{ old('usertype') }} @endif">
+                    @error('usertype')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div> -->
  
                 <div class="form-group col-md-12 mb-3">
                     <label for="">Your Email</label>
