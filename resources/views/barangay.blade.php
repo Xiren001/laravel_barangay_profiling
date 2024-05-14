@@ -46,6 +46,17 @@
           </a>
         </div>
 
+        @if (Route::has('register'))
+                                    <div class="log">
+                                        <a
+                                            href="{{ route('register') }}"
+                                          
+                                        >
+                                            Register
+                                        </a>
+                                        </div>
+                                    @endif
+
 
         @endauth
       </nav>

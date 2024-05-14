@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ResidencesController;
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ResidentController;
+
 
 
 Route::get('/', function () {
@@ -26,7 +27,6 @@ Route::get('/privacy', function () {
 Route::get('/faq', function () {
     return view('PTD/faq');
 });
-
 
 
 Route::get('/bussiness', function () {
@@ -51,23 +51,15 @@ Route::get('/indegency', function () {
 
 Route::get('/admin', [UserController::class, 'index'])->name('user.index');
 Route::group(['prefix' => 'admin/user'], function () {
-Route::get('/create', [UserController::class, 'create'])->name('user.create');
-Route::post('/add', [UserController::class, 'store'])->name('user.store');
-Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
-Route::post('/delete', [UserController::class, 'destroy'])->name('user.delete');
+    Route::get('/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/add', [UserController::class, 'store'])->name('user.store');
+    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::post('/delete', [UserController::class, 'destroy'])->name('user.delete');
 });
 
-
-// Route::get('/residences',[ResidenceController::class, 'index']);
-// Route::get('/residences/Edit/{id}/', [ResidenceController::class, 'edit']);
-// Route::post('/residences/store',[ResidenceController::class, 'store']);
-// Route::get('/residences/Delete/{id}', [ResidenceController::class, 'destroy']);
-
-Route::get('/residences', [ResidencesController::class, 'index'])->name('residence.index');
-Route::get('/residences/create', [ResidencesController::class, 'create'])->name('residence.create');
-Route::post('/residences', [ResidencesController::class, 'store'])->name('residence.store');
-
+Route::resource('products', ProductController::class);
+Route::resource('residents', ResidentController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -79,4 +71,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

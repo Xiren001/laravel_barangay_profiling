@@ -53,7 +53,7 @@
                             </a>
                         </li>
                         <li class="list-item">
-                            <a href="/IT26/BARANGAY/dashboard-residence/Cdashboard.php">
+                            <a href="{{ asset('residents') }}">
                                 <i class='bx bx-message-square-dots'></i>
                                 <span class="link-name">Community Record</span>
                             </a>
