@@ -1,4 +1,4 @@
-//resources/views/admin/add_edit_user.blade.php
+
 @extends('layouts.content')
 @section('main-content')
 <div class="container">
@@ -14,6 +14,14 @@
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
+
+                <!-- <div class="form-group col-md-12 mb-3">
+                    <label for="">usertype</label>
+                    <input class="form-control" type="text" name="usertype" placeholder="Enter usertype" value="@if (isset($edit->id)) {{ $edit->usertype }}@else {{ old('usertype') }} @endif">
+                    @error('usertype')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div> -->
  
                 <div class="form-group col-md-12 mb-3">
                     <label for="">Your Email</label>
@@ -22,6 +30,16 @@
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
+
+                <div class="form-group col-md-12 mb-3">
+                    <label for="">Your Password</label>
+                    <input class="form-control" type="text" name="password" placeholder="password" value="@if (isset($edit->id)) {{ $edit->password }}@else {{ old('password') }} @endif">
+                    @error('name')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+
                 <div class="form-group col-md-12 mb-5">
                     <label for="">Photo</label>
                     <div class="avatar-upload">

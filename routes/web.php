@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ResidentsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ResidentController;
+
 
 
 Route::get('/', function () {
@@ -25,7 +27,6 @@ Route::get('/privacy', function () {
 Route::get('/faq', function () {
     return view('PTD/faq');
 });
-
 
 
 Route::get('/bussiness', function () {
@@ -57,6 +58,8 @@ Route::group(['prefix' => 'admin/user'], function () {
     Route::post('/delete', [UserController::class, 'destroy'])->name('user.delete');
 });
 
+Route::resource('products', ProductController::class);
+Route::resource('residents', ResidentController::class);
 
 
 
@@ -70,4 +73,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

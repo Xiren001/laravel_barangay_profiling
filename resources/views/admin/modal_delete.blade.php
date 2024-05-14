@@ -1,4 +1,4 @@
-//resources/views/admin/modal_delete.blade.php
+
 <!-- Modal -->
 <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDeleteTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

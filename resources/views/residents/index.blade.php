@@ -1,5 +1,6 @@
-@extends('layouts.content')
-@section('main-content')
+@extends('residents.layout')
+
+@section('content')
 <div class="container-div">
     <div class="menu">
         <nav class="sidebar">
@@ -19,13 +20,13 @@
                 <div class="men-p">
                     <p>MENU</p>
                 </div>
-                <li class="list-item active">
+                <li class="list-item ">
                     <a href="{{ asset('admin') }}">
                         <i class='bx bx-user'></i>
                         <span class="link-name">Personel</span>
                     </a>
                 </li>
-                <li class="list-item">
+                <li class="list-item active">
                     <a href="{{ asset('residents') }}">
                         <i class='bx bx-message-square-dots'></i>
                         <span class="link-name">Community Record</span>
@@ -82,7 +83,7 @@
 
     <div class="table-wrapper">
         <div class="table-title">
-            <div class="bg-gray-100 dark:bg-gray-900">
+        <div class="bg-gray-100 dark:bg-gray-900">
                 @include('layouts.navigation')
 
                 <!-- Page Heading -->
@@ -94,7 +95,7 @@
                 </header>
                 @endif
             </div>
-            
+
             <div class="roww">
                 <div style="display: flex; flex-direction:row; padding:1rem 4rem; width:100%; gap:1rem;">
                     <div class="col-sm-6">
@@ -102,7 +103,7 @@
                     </div>
 
                     <div class="textt" style="width: 100%;">
-                        <a href="{{ route('user.create') }}" class="btn btn-add" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Resident</span></a>
+                        <a href="{{ route('residents.create') }}" class="btn btn-add" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Resident</span></a>
                     </div>
                     <form action="" method="GET" style="display: flex; align-items:center; justify-content:center; width:100%;">
                         <div class="input-group ">
@@ -111,21 +112,13 @@
                     </form>
                 </div>
             </div>
+
         </div>
 
-        <div class="alrets" id="alert" style=" padding: 0 ; position:fixed;  left:  85%;
-    top: 90%;">
-            @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-            @endif
-            @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-            @endif
-        </div>
+
+        @session('success')
+        <div class="alert alert-success" role="alert"> {{ $value }} </div>
+        @endsession
 
         <table class="table table-striped table-hover">
             <thead>
@@ -136,19 +129,23 @@
                             <label for="selectAll"></label>
                         </span>
                     </th>
-
-                    <th class="th">Photo</th>
-                    <th class="th">Name</th>
-                    <th class="th">User Type</th>
-                    <th class="th">Email</th>
-                    <th class="th">Password</th>
-                    <th class="th">Status</th>
-
-                    <th style="text-align: center; padding-right:25px; display:flex; flex-wrap:nowrap; ">Action</th>
+                    
+                    <th>Image</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    
+                    <th>Gender</th>
+                   
+                    <th>Precinct No</th>
+                    
+                    <th style="text-align: center;">Action</th>
                 </tr>
             </thead>
+
             <tbody>
-                @forelse($users as $index => $row)
+                @forelse ($residents as $resident)
                 <tr>
                     <td>
                         <span class="custom-checkbox">
@@ -156,59 +153,43 @@
                             <label for="checkbox1"></label>
                         </span>
                     </td>
+                    <td><img src="/images/{{ $resident->image }}" width="50px"></td>
+                    <td>{{ $resident->firstname }}</td>
+                    <td>{{ $resident->middlename }}</td>
+                    <td>{{ $resident->lastname }}</td>
+                    <td>{{ $resident->address }}</td>
+                    
+                    <td>{{ $resident->gender }}</td>
+                  
+                    <td>{{ $resident->presinct_no }}</td>
+                   
+                    <td width="200px">
+                        <form action="{{ route('residents.destroy',$resident->id) }}" method="POST">
 
-                    <td class="td">
-                        <div class="showPhoto">
-                            <div id="imagePreview" style="@if ($row->photo != '') background-image:url('{{ url('/') }}/uploads/{{ $row->photo }}')@else background-image: url('{{ url('/img/avatar.png') }}') @endif;">
-                            </div>
-                        </div>
-                    </td>
-                    <td class="td">{{ $row->name }}</td>
-                    <td class="td">{{ $row->usertype }}</td>
-                    <td class="td">{{ $row->email }}</td>
-                    <td class="td">{{ $row->password }}</td>
-                    <td class="td">active</td>
+                            <a class="btn btn-info btn-sm" href="{{ route('residents.show',$resident->id) }}"><i class="fa-solid fa-list"></i></a>
 
-                    <td>
-                        <a href="{{ route('user.edit', ['id' => $row->id]) }}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <button class="delete" onClick="deleteFunction('{{ $row->id }}')"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></button>
+                            <a class="btn btn-primary btn-sm" href="{{ route('residents.edit',$resident->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+                        </form>
                     </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5">No Users Found</td>
+                    <td colspan="5">There are no data.</td>
                 </tr>
                 @endforelse
             </tbody>
+
         </table>
-    </div>
-    @include ('admin.modal_delete')
-    @endsection
-</div>
 
-@push('js')
-<script>
-    function deleteFunction(id) {
-        document.getElementById('delete_id').value = id;
-        $("#modalDelete").modal('show');
-    }
-</script>
-@endpush
+        {!! $residents->withQueryString()->links('pagination::bootstrap-5') !!}
 
-
-<div class="py popup" id="loggedInMessage">
-    <div class="max-w-7xl mx-auto ">
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 text-gray-900 dark:text-gray-100" style="height: 3.5rem;  display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;">
-                {{ __("You're logged in!") }}
-            </div>
-        </div>
     </div>
 </div>
-
 
 <script>
     // Wait for the DOM content to fully load
@@ -226,3 +207,4 @@
         }
     });
 </script>
+@endsection
