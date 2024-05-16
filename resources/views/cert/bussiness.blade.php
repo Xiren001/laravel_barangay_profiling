@@ -60,11 +60,14 @@
     <div class="container req">
       <div class="req-div">
         <p><b>Note:</b> Please make sure to provide accurate information in the form below. Processing of Barangay Business Permit may take up to 1-2hrs. Make sure to upload the needed files and follow the instructions carefully. For Gcash payments, please provide the reference number in the designated field. Thank you.</p>
+        @session('success')
+            <div class="alert alert-success" role="alert"> {{ $value }} </div>
+        @endsession
       </div>
     </div>
 
     <div class="container form-div">
-          <form action="" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('bussinesses.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
             <fieldset class="f1">
               <div>
@@ -177,7 +180,7 @@
                 <div class="form-text text-danger">{{ $message }}</div>
                 @enderror
             </fieldset>
-
+            @csrf
             <button class="submit-btn" type="submit">Submit</button>
           </form>
         </div>

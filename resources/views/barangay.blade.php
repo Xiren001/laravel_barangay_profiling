@@ -28,6 +28,7 @@
       <a href="#service" style="--i: 2">Service</a>
       <a href="#map" style="--i: 3">Map</a>
       <a href="{{ URL('faq') }}" style="--i: 4">FAQ</a>
+      <a href="{{ URL('bussinesses') }}" style="--i: 4">track</a>
     </nav>
     <div class="btn-div">
       @if (Route::has('login'))

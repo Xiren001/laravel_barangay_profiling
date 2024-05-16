@@ -64,38 +64,57 @@
     </div>
 
     <div class="container form-div">
-          <form action="" method="">
-
+    <form action="{{ route('clearances.store') }}" method="POST" enctype="multipart/form-data">
+          @csrf
             <fieldset class="f1">
               <div>
               <label for="tracking">Tracking code</label>
-              <input type="text" id="tracking" name="tracking" readonly>
+              <input type="text" id="tracking" name="tracking"  class="form-control @error('tracking') is-invalid @enderror" readonly>
+              @error('tracking')
+                <div class="form-text text-danger">{{ $message }}</div>
+                @enderror
               </div>
             </fieldset>
 
             <fieldset class="f2">
               <div>
               <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Enter Your Full Name">
+              <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name" placeholder="Enter Your Full Name">
+                @error('name')
+                <div class="form-text text-danger">{{ $message }}</div>
+                @enderror
               </div>
               <div>
               <label for="address">Address</label>
-              <input type="text" id="address" name="address" placeholder="Enter Your Address">
+              <input class="form-control @error('address') is-invalid @enderror" type="text" id="address" name="address" placeholder="Enter Your Address">
+                @error('address')
+                <div class="form-text text-danger">{{ $message }}</div>
+                @enderror
               </div>
               <div>
               <label for="dateb">Date of Birth</label>
-              <input type="date" id="dateb" name="dateb" >
+              <input class="form-control @error('dateb') is-invalid @enderror" type="date" id="dateb" name="dateb" >
+                @error('dateb')
+                <div class="form-text text-danger">{{ $message }}</div>
+                @enderror
               </div>
               </fieldset>
 
               <fieldset class="f3">
               <div>
               <label for="number">Contact Number</label>
-              <input type="number" id="number" name="number" placeholder="Enter Your Contact No.">
+              <input class="form-control @error('number') is-invalid @enderror" type="number" id="number" name="number" placeholder="Enter Your Contact No.">
+                @error('number')
+                <div class="form-text text-danger">{{ $message }}</div>
+                @enderror
               </div>
+
               <div>
               <label for="date">Pick-up date</label>
-              <input type="date" id="date" name="date">
+              <input class="form-control @error('date') is-invalid @enderror" type="date" id="date" name="date">
+                @error('date')
+                <div class="form-text text-danger">{{ $message }}</div>
+                @enderror
               </div>
             </fieldset>
 
@@ -103,7 +122,10 @@
               <div>
                 <div>
               <label for="upload_file">Upload valid ID</label>
-              <input type="file" name="upload_file" class="form-control"  id="upload_file" accept="image/*" onchange="getImagePreview(event)">
+              <input type="file" name="upload_file" class="form-control @error('upload_file') is-invalid @enderror"  id="upload_file" accept="image/*" onchange="getImagePreview(event)">
+              @error('upload_file')
+                <div class="form-text text-danger">{{ $message }}</div>
+                @enderror
                 </div>
                 <div id="preview" class="img-area col-md-4" data-img="">
                   <i class='bx bxs-cloud-upload icon-UP'></i>
@@ -114,7 +136,10 @@
               <div>
                 <div>
               <label for="upload_file_sig">Upload Cedula (Community Tax Certificate)</label>
-              <input type="file" name="upload_file_sig" class="form-control"  id="upload_file_sig" accept="image/*" onchange="getImagePreview1(event)">
+              <input type="file" name="upload_file_sig" class="form-control @error('upload_file_sig') is-invalid @enderror"  id="upload_file_sig" accept="image/*" onchange="getImagePreview1(event)">
+              @error('upload_file_sig')
+                <div class="form-text text-danger">{{ $message }}</div>
+                @enderror
                 </div>
                 <div id="preview1" class="img-area col-md-4" data-img="">
                   <i class='bx bxs-cloud-upload icon-UP'></i>
@@ -127,23 +152,32 @@
             <fieldset class="f5">
               <div>
               <label for="payment">Payment Method:</label>
-              <select id="payment" name="payment">
+              <select class="form-control @error('payment') is-invalid @enderror" id="payment" name="payment">
                 <option value="cash">Cash on Pick-up</option>
                 <option value="Gcash">Gcash</option>
               </select>
+              @error('payment')
+                <div class="form-text text-danger">{{ $message }}</div>
+                @enderror
               <p>Note: For Gcash you can send it to this number 09922521838</p>
               </div>
               <div>
               <label for="ref">Reference No: (for Gcash Payment only)</label>
-              <input type="text" id="ref" name="ref" placeholder="Enter Gcash Reference No.">
+              <input class="form-control @error('ref') is-invalid @enderror" type="text" id="ref" name="ref" placeholder="Enter Gcash Reference No.">
+                @error('ref')
+                <div class="form-text text-danger">{{ $message }}</div>
+                @enderror
               </div>
             </fieldset>
 
             <fieldset>
               <label for="bio">Purpose</label>
-              <textarea id="bio" name="bio" placeholder="Enter Purpose "></textarea>
+              <textarea class="form-control @error('bio') is-invalid @enderror" id="bio" name="bio" placeholder="Enter Purpose "></textarea>
+                @error('bio')
+                <div class="form-text text-danger">{{ $message }}</div>
+                @enderror
             </fieldset>
-
+            @csrf
             <button class="submit-btn" type="submit">Submit</button>
           </form>
         </div>
