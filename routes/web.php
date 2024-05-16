@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ResidentController;
+use App\Http\Controllers\BussinessController;
+use App\Http\Controllers\ClearanceController;
+use App\Http\Controllers\IndegencyController;
+use App\Http\Controllers\ResidenceController;
+use App\Http\Controllers\IdController;
 
 
 
@@ -49,6 +54,8 @@ Route::get('/indegency', function () {
     return view('cert/indegency');
 });
 
+
+
 Route::get('/admin', [UserController::class, 'index'])->name('user.index');
 Route::group(['prefix' => 'admin/user'], function () {
     Route::get('/create', [UserController::class, 'create'])->name('user.create');
@@ -58,8 +65,17 @@ Route::group(['prefix' => 'admin/user'], function () {
     Route::post('/delete', [UserController::class, 'destroy'])->name('user.delete');
 });
 
+
 Route::resource('products', ProductController::class);
 Route::resource('residents', ResidentController::class);
+Route::resource('bussinesses', BussinessController::class);
+Route::resource('clearances', ClearanceController::class);
+Route::resource('indegencys', IndegencyController::class);
+Route::resource('residences', ResidenceController::class);
+Route::resource('ids', IdController::class);
+
+Route::get('requested', [BussinessController::class, 'index2']);
+
 
 
 

@@ -84,7 +84,7 @@
                         </li>
 
                         <li class="list-item">
-                            <a href="/IT26/BARANGAY/dashboard-3/dashboard.php">
+                            <a href="{{ URL('requested') }}">
                                 <i class='bx bx-food-menu'></i>
                                 <span class="link-name">Requested Document</span>
                             </a>
