@@ -24,6 +24,20 @@ class BussinessController extends Controller
 
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return response()
+     */
+    public function index2(): View
+    {
+        $bussinesses = Bussiness::latest()->paginate(100);
+        
+        return view('bussinesses.index2',compact('bussinesses'))
+                    ->with('i', (request()->input('page', 1) - 1) * 100);
+
+    }
+
 
     
 

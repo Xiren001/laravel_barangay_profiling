@@ -24,6 +24,20 @@ class IndegencyController extends Controller
 
     }
 
+     /**
+     * Display a listing of the resource.
+     *
+     * @return response()
+     */
+    public function index2(): View
+    {
+        $indegencys = Indegency::latest()->paginate(100);
+        
+        return view('indegencys.index2',compact('indegencys'))
+                    ->with('i', (request()->input('page', 1) - 1) * 100);
+
+    }
+
 
     
 

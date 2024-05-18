@@ -1,4 +1,5 @@
-@extends('residents.layout')
+@extends('clearances.layout')
+
 
 @section('content')
 <div class="container-div">
@@ -26,13 +27,13 @@
                         <span class="link-name">Personel</span>
                     </a>
                 </li>
-                <li class="list-item active">
+                <li class="list-item">
                     <a href="{{ asset('residents') }}">
                         <i class='bx bx-message-square-dots'></i>
                         <span class="link-name">Community Record</span>
                     </a>
                 </li>
-                <li class="list-item">
+                <li class="list-item active">
                             <a href="{{ URL('requested-clearance') }}">
                                 <i class='bx bx-certification'></i>
                                 <span class="link-name">Brangay Certification</span>
@@ -106,11 +107,11 @@
             <div class="roww">
                 <div style="display: flex; flex-direction:row; padding:1rem 4rem; width:100%; gap:1rem;">
                     <div class="col-sm-6">
-                        <h2>Community Record</h2>
+                        <h2>Barangay Clearance</h2>
                     </div>
 
                     <div class="textt" style="width: 100%;">
-                        <a href="{{ route('residents.create') }}" class="btn btn-add" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Resident</span></a>
+                        <a href="{{ route('clearances.create') }}" class="btn btn-add" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Create Certificate</span></a>
                     </div>
                     <form action="" method="GET" style="display: flex; align-items:center; justify-content:center; width:100%;">
                         <div class="input-group ">
@@ -137,22 +138,19 @@
                         </span>
                     </th>
                     
-                    <th>Image</th>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                    <th>Last Name</th>
+                    <th>Tracking Number</th>
+                    <th>Fullname</th>
                     <th>Address</th>
+                    <th>Pick-up Date</th>
                     
-                    <th>Gender</th>
-                   
-                    <th>Precinct No</th>
+                    <th>Status</th>
                     
                     <th style="text-align: center;">Action</th>
                 </tr>
             </thead>
 
             <tbody>
-                @forelse ($residents as $resident)
+                @forelse ($clearances as $clearance)
                 <tr>
                     <td>
                         <span class="custom-checkbox">
@@ -160,22 +158,17 @@
                             <label for="checkbox1"></label>
                         </span>
                     </td>
-                    <td><img src="/images/{{ $resident->image }}" width="50px"></td>
-                    <td>{{ $resident->firstname }}</td>
-                    <td>{{ $resident->middlename }}</td>
-                    <td>{{ $resident->lastname }}</td>
-                    <td>{{ $resident->address }}</td>
-                    
-                    <td>{{ $resident->gender }}</td>
-                  
-                    <td>{{ $resident->presinct_no }}</td>
-                   
+                    <td>{{ $clearance->tracking }}</td>
+                    <td>{{ $clearance->name }}</td>
+                    <td>{{ $clearance->address }}</td>
+                    <td>{{ $clearance->date }}</td>
+                    <td>{{ $clearance->status }}</td>
                     <td width="200px">
-                        <form action="{{ route('residents.destroy',$resident->id) }}" method="POST">
+                        <form action="{{ route('clearances.destroy',$clearance->id) }}" method="POST">
 
-                            <a class="btn btn-info btn-sm" href="{{ route('residents.show',$resident->id) }}"><i class="fa-solid fa-list"></i></a>
+                            <a class="btn btn-info btn-sm" href="{{ route('clearances.show',$clearance->id) }}"><i class="fa-solid fa-list"></i></a>
 
-                            <a class="btn btn-primary btn-sm" href="{{ route('residents.edit',$resident->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('clearances.edit',$clearance->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
 
                             @csrf
                             @method('DELETE')
@@ -193,25 +186,8 @@
 
         </table>
 
-        {!! $residents->withQueryString()->links('pagination::bootstrap-5') !!}
+        {!! $clearances->withQueryString()->links('pagination::bootstrap-5') !!}
 
     </div>
 </div>
-
-<script>
-    // Wait for the DOM content to fully load
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get the element with the ID "loggedInMessage"
-        const loggedInMessage = document.getElementById('loggedInMessage');
-
-        // Check if the element exists
-        if (loggedInMessage) {
-            // Set a timeout to hide the element after 1000 milliseconds (1 second)
-            setTimeout(function() {
-                // Hide the element by adding a CSS class that sets display to none
-                loggedInMessage.style.display = 'none';
-            }, 2000); // 2000 milliseconds = 2 second
-        }
-    });
-</script>
 @endsection

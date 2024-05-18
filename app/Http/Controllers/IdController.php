@@ -24,6 +24,21 @@ class IdController extends Controller
 
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return response()
+     */
+    public function index2(): View
+    {
+        $ids = Id::latest()->paginate(100);
+        
+        return view('ids.index2',compact('ids'))
+                    ->with('i', (request()->input('page', 1) - 1) * 100);
+
+    }
+
+
 
     
 

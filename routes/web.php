@@ -74,7 +74,11 @@ Route::resource('indegencys', IndegencyController::class);
 Route::resource('residences', ResidenceController::class);
 Route::resource('ids', IdController::class);
 
-Route::get('requested', [BussinessController::class, 'index2']);
+Route::get('requested-business', [BussinessController::class, 'index2']);
+Route::get('requested-clearance', [ClearanceController::class, 'index2']);
+Route::get('requested-indigency', [IndegencyController::class, 'index2']);
+Route::get('requested-residency', [ResidenceController::class, 'index2']);
+Route::get('requested-id', [IdController::class, 'index2']);
 
 
 Route::get('/dashboard', function () {

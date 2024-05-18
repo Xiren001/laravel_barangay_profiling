@@ -59,21 +59,33 @@
                             </a>
                         </li>
                         <li class="list-item">
-                            <a href="#">
+                            <a href="{{ URL('requested-clearance') }}">
                                 <i class='bx bx-certification'></i>
                                 <span class="link-name">Brangay Certification</span>
                             </a>
                         </li>
                         <li class="list-item">
-                            <a href="#">
+                            <a href="{{ URL('requested-indigency') }}">
                                 <i class='bx bx-receipt'></i>
                                 <span class="link-name">Certificate of Indigency</span>
                             </a>
                         </li>
                         <li class="list-item">
-                            <a href="#">
+                            <a href="{{ URL('requested-business') }}">
                                 <i class='bx bx-id-card'></i>
                                 <span class="link-name">Business Clearance</span>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="{{ URL('requested-residency') }}">
+                                <i class='bx bx-id-card'></i>
+                                <span class="link-name">Certificate of Residency</span>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="{{ URL('requested-id') }}">
+                                <i class='bx bx-id-card'></i>
+                                <span class="link-name">Barangay ID</span>
                             </a>
                         </li>
                         <li class="list-item">
@@ -84,7 +96,7 @@
                         </li>
 
                         <li class="list-item">
-                            <a href="{{ URL('requested') }}">
+                            <a href="">
                                 <i class='bx bx-food-menu'></i>
                                 <span class="link-name">Requested Document</span>
                             </a>
@@ -95,12 +107,7 @@
                                 <span class="link-name">Household Record</span>
                             </a>
                         </li>
-                        <li class="list-item">
-                            <a href="#">
-                                <i class='bx bx-cog'></i>
-                                <span class="link-name">Settings</span>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </nav>
             </div>

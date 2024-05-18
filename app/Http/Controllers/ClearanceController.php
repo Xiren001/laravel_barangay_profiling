@@ -24,6 +24,21 @@ class ClearanceController extends Controller
 
     }
 
+      /**
+     * Display a listing of the resource.
+     *
+     * @return response()
+     */
+    public function index2(): View
+    {
+        $clearances = Clearance::latest()->paginate(100);
+        
+        return view('clearances.index2',compact('clearances'))
+                    ->with('i', (request()->input('page', 1) - 1) * 100);
+
+    }
+
+
 
     
 

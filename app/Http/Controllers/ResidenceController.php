@@ -24,6 +24,20 @@ class ResidenceController extends Controller
 
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return response()
+     */
+    public function index2(): View
+    {
+        $residences = Residence::latest()->paginate(100);
+        
+        return view('residences.index2',compact('residences'))
+                    ->with('i', (request()->input('page', 1) - 1) * 100);
+
+    }
+
 
     
 
