@@ -1,6 +1,7 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="border-b border-gray-100 p-2 dark:border-gray-700" style=" background: rgb(40, 83, 107);
+    background: linear-gradient(90deg, rgba(40, 83, 107, 1) 41%, rgba(126, 168, 190, 1) 79%, rgba(126, 168, 190, 1) 100%);">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div style="width:100%; padding:0 3.5rem ">
         <div class="flex justify-between" style="height: 3rem;">
             <div class="flex">
             

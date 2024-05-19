@@ -38,7 +38,7 @@ Route::get('/bussiness', function () {
     return view('cert/bussiness');
 });
 
-Route::get('/clearance', function () {
+Route::get('/clearances', function () {
     return view('cert/clearance');
 });
 
@@ -58,16 +58,17 @@ Route::get('/indegency', function () {
 
 Route::get('/admin', [UserController::class, 'index'])->name('user.index');
 Route::group(['prefix' => 'admin/user'], function () {
-    Route::get('/create', [UserController::class, 'create'])->name('user.create');
-    Route::post('/add', [UserController::class, 'store'])->name('user.store');
-    Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-    Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
-    Route::post('/delete', [UserController::class, 'destroy'])->name('user.delete');
+Route::get('/create', [UserController::class, 'create'])->name('user.create');
+Route::post('/add', [UserController::class, 'store'])->name('user.store');
+Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
+Route::post('/delete', [UserController::class, 'destroy'])->name('user.delete');
 });
 
 
 Route::resource('products', ProductController::class);
 Route::resource('residents', ResidentController::class);
+
 Route::resource('bussinesses', BussinessController::class);
 Route::resource('clearances', ClearanceController::class);
 Route::resource('indegencys', IndegencyController::class);
@@ -79,6 +80,13 @@ Route::get('requested-clearance', [ClearanceController::class, 'index2']);
 Route::get('requested-indigency', [IndegencyController::class, 'index2']);
 Route::get('requested-residency', [ResidenceController::class, 'index2']);
 Route::get('requested-id', [IdController::class, 'index2']);
+
+
+Route::put('/bussinesses/{bussiness}', [BussinessController::class, 'update'])->name('bussinesses.update');
+Route::put('/clearances/{clearance}', [ClearanceController::class, 'update'])->name('clearances.update');
+Route::put('/indegencys/{indegency}', [IndegencyController::class, 'update'])->name('indegencys.update');
+Route::put('/residences/{residence}', [ResidenceController::class, 'update'])->name('residences.update');
+Route::put('/ids/{id}', [IdController::class, 'update'])->name('ids.update');
 
 
 Route::get('/dashboard', function () {

@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
   
 class IdController extends Controller
 {
@@ -108,50 +109,22 @@ class IdController extends Controller
         return view('ids.edit', compact('id'));
     }
   
-    /**
+     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Id $id): RedirectResponse
+    public function update(Request $request, Id $id): JsonResponse
     {
         $request->validate([
-            'tracking' => 'required',
-            'name' => 'required',
-            'address' => 'required',
-            'dateb' => 'required',
-            'number' => 'required',
-            'date' => 'required',
-            'payment' => 'required',
-            'ref' => 'required',
-            'bio' => 'required',
+            'status' => 'required|string',
         ]);
-    
-        $input = $request->all();
 
-        if ($uploadFile = $request->file('upload_file')) {
-            $destinationPath = 'images/';
-            $profileImage = date('YmdHis') . "." . $uploadFile->getClientOriginalExtension();
-            $uploadFile->move($destinationPath, $profileImage);
-            $input['upload_file'] = "$profileImage";
-        } else {
-            unset($input['upload_file']);
-        }
-        
-        if ($uploadFileSig = $request->file('upload_file_sig')) {
-            $destinationPath = 'images/';
-            $profileImageSig = date('YmdHis') . "_sig." . $uploadFileSig->getClientOriginalExtension();
-            $uploadFileSig->move($destinationPath, $profileImageSig);
-            $input['upload_file_sig'] = "$profileImageSig";
-        } else {
-            unset($input['upload_file_sig']);
-        }
-        
-            
-        $id->update($input);
-      
-        return redirect()->route('ids.index')
-                         ->with('success', 'id updated successfully');
+        // Update the business status
+        $id->status = $request->status;
+        $id->save();
+
+        // Return a JSON response
+        return response()->json(['success' => true, 'message' => 'Id status updated successfully']);
     }
-  
     /**
      * Remove the specified resource from storage.
      */

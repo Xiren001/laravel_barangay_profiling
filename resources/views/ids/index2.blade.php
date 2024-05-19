@@ -162,7 +162,18 @@
                     <td>{{ $id->name }}</td>
                     <td>{{ $id->address }}</td>
                     <td>{{ $id->date }}</td>
-                    <td>{{ $id->status }}</td>
+                    <td>
+                        <select name="status" class="form-control @error('status') is-invalid @enderror" id="inputStatus" data-business-id="{{ $id->id }}" onchange="updateStatus(this)">
+                            <option hidden value="{{ $id->status }}">{{ $id->status }}</option>
+                            <option value="Received">Received</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                        @error('status')
+                        <div class="form-text text-danger">{{ $message }}</div>
+                        @enderror
+                    </td>
                     <td width="200px">
                         <form action="{{ route('ids.destroy',$id->id) }}" method="POST">
 
@@ -190,4 +201,35 @@
 
     </div>
 </div>
+
+<script>
+    function updateStatus(selectElement) {
+        const status = selectElement.value;
+        const idId = selectElement.getAttribute('data-business-id');
+        const url = `/ids/${idId}`;
+
+        // Make an AJAX request to update the status
+        fetch(url, {
+                method: 'PUT', // Use PUT or PATCH depending on your route
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token for security
+                },
+                body: JSON.stringify({
+                    status: status
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Status updated successfully');
+                } else {
+                    alert('Error updating status');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+</script>
 @endsection

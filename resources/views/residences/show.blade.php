@@ -1,95 +1,113 @@
-@extends('bussinesses.layout')
+@extends('residences.layout')
 
 @section('content')
-<div class="card mt-5">
-    <h2 class="card-header">Show Business</h2>
-    <div class="card-body">
-
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a class="btn btn-primary btn-sm" href=""><i class="fa fa-arrow-left"></i> Back</a>
+<div class="container p-5">
+    <div class="container card mt-5">
+        <div class="container show-title p-3">
+            <h2 class="card-header">Certificate of Residency</h2>
         </div>
 
-        <div class="row">
+        <div class="card-body">
 
-            <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
-                <div class="form-group">
-                    <strong>Tracking code:</strong> <br />
-                    {{ $bussiness->tracking }}
-                </div>
-            </div>
+            <div class="container row">
 
-            <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
-                <div class="form-group">
-                    <strong>Full Name:</strong><br />
-                    {{ $bussiness->name }}
+                <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+                    <div class="form-group f-show">
+                        <strong>Tracking code</strong> <br />
+                        {{ $residence->tracking }}
+                    </div>
                 </div>
-            </div>
+                <hr style="color:black;">
 
-            <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
-                <div class="form-group">
-                    <strong>Address:</strong><br />
-                    {{ $bussiness->address }}
-                </div>
-            </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
-                <div class="form-group">
-                    <strong>Date of Birth:</strong><br />
-                    {{ $bussiness->dateb }}
-                </div>
-            </div>
+                <div class="d-md-flex gap-5 ">
 
-            <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
-                <div class="form-group">
-                    <strong>Contact Number:</strong><br />
-                    {{ $bussiness->number }}
-                </div>
-            </div>
+                    <div class="form-group f-show">
+                        <strong>Full Name</strong><br />
+                        {{ $residence->name }}
+                    </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
-                <div class="form-group">
-                    <strong>Pick-up date:</strong><br />
-                    {{ $bussiness->date }}
-                </div>
-            </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
-                <div class="form-group">
-                    <strong>Community Tax Certificate (Cedula) Image:</strong><br />
-                    <img src="/images/{{ $bussiness->upload_file }}" width="500px">
-                </div>
-            </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
-                <div class="form-group">
-                    <strong>DTI Business Name Registration Image:</strong><br />
-                    <img src="/images/{{ $bussiness->upload_file_sig }}" width="500px">
-                </div>
-            </div>
+                    <div class="form-group f-show">
+                        <strong>Address</strong><br />
+                        {{ $residence->address }}
+                    </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
-                <div class="form-group">
-                    <strong>Payment Method:</strong><br />
-                    {{ $bussiness->payment }}
-                </div>
-            </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
-                <div class="form-group">
-                    <strong>Gcash Reference No:</strong><br />
-                    {{ $bussiness->ref }}
-                </div>
-            </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
-                <div class="form-group">
-                    <strong>Purpose:</strong><br />
-                    {{ $bussiness->bio }}
+                    <div class="form-group f-show">
+                        <strong>Date of Birth</strong><br />
+                        {{ $residence->dateb }}
+                    </div>
+
+
+                    <div class="form-group f-show">
+                        <strong>Contact Number</strong><br />
+                        {{ $residence->number }}
+                    </div>
+
+
+
+                    <div class="form-group f-show">
+                        <strong>Pick-up date</strong><br />
+                        {{ $residence->date }}
+                    </div>
                 </div>
+
+
+                <div class="d-md-flex gap-5 ">
+                    <div class="form-group f-show">
+                        <strong>Community Tax Certificate (Cedula)</strong><br />
+                        <div class="container show">
+                        <img src="/images/{{ $residence->upload_file }}" >
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group f-show ">
+                        <strong>DTI Business Name Registration</strong><br />
+                        <div class="container show">
+                        <img src="/images/{{ $residence->upload_file_sig }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-md-flex gap-5 ">
+                    <div class="form-group f-show">
+                        <strong>Payment Method</strong><br />
+                        {{ $residence->payment }}
+                    </div>
+
+
+
+                    <div class="form-group f-show">
+                        <strong>Gcash Reference No</strong><br />
+                        {{ $residence->ref }}
+                    </div>
+                </div>
+
+
+                <div class="card-footer">
+                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+                        <div class="form-group f-show">
+                            <strong>Purpose</strong><br />
+                            {{ $residence->bio }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-footer">
+                    <div class="p-2 gap-2 d-md-flex justify-content-md-end">
+                        <a class="btn btn-primary btn-sm" href="{{ URL('requested-residency') }}"><i class="fa fa-arrow-left"></i> Back</a>
+                    </div>
+                </div>
+
+
             </div>
 
         </div>
-
     </div>
 </div>
 @endsection
