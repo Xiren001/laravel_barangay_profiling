@@ -58,7 +58,7 @@
 
                 <div class="d-md-flex gap-5 ">
                     <div class="form-group f-show">
-                        <strong>Community Tax Certificate (Cedula)</strong><br />
+                        <strong>Valid ID</strong><br />
                         <div class="container show">
                         <img src="/images/{{ $id->upload_file }}" >
                         </div>
@@ -67,7 +67,7 @@
 
 
                     <div class="form-group f-show ">
-                        <strong>DTI Business Name Registration</strong><br />
+                        <strong>Barangay Certificate</strong><br />
                         <div class="container show">
                         <img src="/images/{{ $id->upload_file_sig }}">
                         </div>

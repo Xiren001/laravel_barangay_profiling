@@ -105,11 +105,11 @@
             <div class="roww">
                 <div style="display: flex; flex-direction:row; padding:1rem 4rem; width:100%; gap:1rem;">
                     <div class="col-sm-6">
-                        <h2>Community Record</h2>
+                        <h2>Employee Record</h2>
                     </div>
 
                     <div class="textt" style="width: 100%;">
-                        <a href="{{ route('user.create') }}" class="btn btn-add" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Resident</span></a>
+                        <a href="{{ route('user.create') }}" class="btn btn-add" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Employee</span></a>
                     </div>
                     <form action="" method="GET" style="display: flex; align-items:center; justify-content:center; width:100%;">
                         <div class="input-group ">

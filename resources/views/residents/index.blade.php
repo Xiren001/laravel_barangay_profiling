@@ -160,7 +160,7 @@
                             <label for="checkbox1"></label>
                         </span>
                     </td>
-                    <td><img src="/images/{{ $resident->image }}" width="50px"></td>
+                    <td><img src="/images/{{ $resident->image }}" width="50px" height="50px" style="border-radius: 5px;"></td>
                     <td>{{ $resident->firstname }}</td>
                     <td>{{ $resident->middlename }}</td>
                     <td>{{ $resident->lastname }}</td>

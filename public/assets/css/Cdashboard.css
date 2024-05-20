@@ -661,11 +661,60 @@ td {
 .r-in{
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
+    width: 100%;
+    padding: 2rem 0;
 }
 .r-first-in{
     display: flex;
     flex-direction: row;
     gap: 3rem;
     width: 100%;
+}
+.r-first-inn{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+}
+.r-second-in{
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+}
+
+.r-in-e{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem 0 2rem 0;
+}
+
+.r-div{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mb-3{
+    width: 100% !important;
+}
+
+
+
+
+
+.mb-3 input{
+    padding: 7px;
+    border-radius: 6px;
+    font-size: 16px;
+    background: #fbfbfb;
+    border: 2px solid transparent;
+    height: 36px;
+    box-shadow: 0 0 0 1px #dddddd, 0 2px 4px 0 rgb(0 0 0 / 7%), 0 1px 1.5px 0 rgb(0 0 0 / 5%);
+}
+
+.mb-3 input:focus{
+    border-radius: 4px;
 }

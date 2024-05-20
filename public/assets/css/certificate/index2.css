@@ -1,0 +1,203 @@
+body {
+  font-family: Helvetica;
+  background: #eee;
+  -webkit-font-smoothing: antialiased;
+}
+
+#main {
+  margin: 2em;
+  border: 6px solid black;
+  position: relative;
+  background-color: white;
+}
+
+.cert-div {
+  display: flex;
+  width: 100%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-div {
+  width: 25%;
+  height: 100%;
+  align-items: center;
+  padding: 1.5rem 0.5rem;
+}
+
+img {
+  width: 180px;
+  height: auto;
+}
+
+.text-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  padding-right: 11rem;
+}
+
+.brg-text {
+  font-size: 2.4em;
+}
+
+.text-p {
+  margin: 2px 0;
+  font-weight: bold;
+}
+
+.line {
+  border: 1px solid black;
+  margin: 1px 50px;
+}
+
+.font-text {
+  text-align: center;
+  padding: 2% 0;
+}
+
+.font2-text {
+  display: flex;
+  text-align: justify;
+  justify-content: center;
+  font-size: 1em;
+  padding: 2rem;
+  flex-direction: column;
+}
+
+.font2-text p {
+  margin: 0;
+}
+
+.text2p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.text2ppp {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.text5p {
+  width: 100%;
+}
+.text5pp {
+  display: flex;
+  width: 100%;
+
+}
+
+p{
+ text-transform: capitalize;
+}
+
+.font3-text {
+  width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Form Styling */
+#cform {
+  height: 35%;
+  margin-top: 10rem;
+  padding: 2rem;
+  background: #fafafa;
+  border: 1px solid #ebebeb;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 1px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+input, select {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  background: #fafafa;
+  color: #636363;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #757575;
+}
+
+input:focus, select:focus {
+  outline: none;
+}
+
+label {
+  color: #000000;
+  font-size: 15px;
+  font-weight: normal;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+input:focus ~ label,
+input.used ~ label,
+select:focus ~ label,
+select.used ~ label {
+  top: -20px;
+  transform: scale(0.75);
+  left: -2px;
+  color: #4a89dc;
+}
+
+#cform p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#cform input, #cform select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#cform button {
+  background-color: #0c2d57;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#cform button:hover {
+  background-color: #0c2d57;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.text5p {
+  display: flex;
+}
+.font-text{
+  padding: 0 5rem;
+}
+
+.font-text p {
+  text-align: justify;
+  text-indent: 4em;
+}
+
+.form-div{
+  display: flex;
+  gap: 2rem;
+
+}

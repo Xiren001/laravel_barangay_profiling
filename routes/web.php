@@ -55,6 +55,21 @@ Route::get('/indegency', function () {
 });
 
 
+Route::get('/barangay-clearance', function () {
+    return view('certi/index1');
+});
+
+Route::get('/business-permit', function () {
+    return view('certi/index2');
+});
+Route::get('/certificate-of-residency', function () {
+    return view('certi/index3');
+});
+Route::get('/certificate-of-indigency', function () {
+    return view('certi/index4');
+});
+
+
 
 Route::get('/admin', [UserController::class, 'index'])->name('user.index');
 Route::group(['prefix' => 'admin/user'], function () {
