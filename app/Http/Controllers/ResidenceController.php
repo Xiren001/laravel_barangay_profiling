@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
   
 class ResidenceController extends Controller
 {
@@ -23,6 +24,22 @@ class ResidenceController extends Controller
                     ->with('i', (request()->input('page', 1) - 1) * 100);
 
     }
+
+   
+    /**
+     * Display a listing of the resource.
+     *
+     * @return View
+     */
+    public function index2(): View
+    {
+        $residences = Residence::latest()->paginate(100);
+        $residencesCount = Residence::count(); // Count the total number of records
+
+        return view('residences.index2', compact('residences', 'residencesCount'))
+            ->with('i', (request()->input('page', 1) - 1) * 100);
+    }
+
 
 
     
@@ -45,13 +62,12 @@ class ResidenceController extends Controller
             'tracking' => 'required|string',
             'name' => 'required|string',
             'address' => 'required|string',
-            'dateb' => 'required|date',
+            'age' => 'required|integer',
             'number' => 'required|string',
             'date' => 'required|date',
             'upload_file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'upload_file_sig' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'payment' => 'required|string',
-            'ref' => 'required|string',
             'bio' => 'required|string',
         ]);
     
@@ -93,48 +109,21 @@ class ResidenceController extends Controller
         return view('residences.edit', compact('residence'));
     }
   
-    /**
+     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Residence $residence): RedirectResponse
+    public function update(Request $request, Residence $residence): JsonResponse
     {
         $request->validate([
-            'tracking' => 'required',
-            'name' => 'required',
-            'address' => 'required',
-            'dateb' => 'required',
-            'number' => 'required',
-            'date' => 'required',
-            'payment' => 'required',
-            'ref' => 'required',
-            'bio' => 'required',
+            'status' => 'required|string',
         ]);
-    
-        $input = $request->all();
 
-        if ($uploadFile = $request->file('upload_file')) {
-            $destinationPath = 'images/';
-            $profileImage = date('YmdHis') . "." . $uploadFile->getClientOriginalExtension();
-            $uploadFile->move($destinationPath, $profileImage);
-            $input['upload_file'] = "$profileImage";
-        } else {
-            unset($input['upload_file']);
-        }
-        
-        if ($uploadFileSig = $request->file('upload_file_sig')) {
-            $destinationPath = 'images/';
-            $profileImageSig = date('YmdHis') . "_sig." . $uploadFileSig->getClientOriginalExtension();
-            $uploadFileSig->move($destinationPath, $profileImageSig);
-            $input['upload_file_sig'] = "$profileImageSig";
-        } else {
-            unset($input['upload_file_sig']);
-        }
-        
-            
-        $residence->update($input);
-      
-        return redirect()->route('residences.index')
-                         ->with('success', 'residence updated successfully');
+        // Update the business status
+        $residence->status = $request->status;
+        $residence->save();
+
+        // Return a JSON response
+        return response()->json(['success' => true, 'message' => 'residence status updated successfully']);
     }
   
     /**

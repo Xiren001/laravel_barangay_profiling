@@ -17,10 +17,26 @@ class ResidentController extends Controller
      */
     public function index(): View
     {
-        $residents = Resident::latest()->paginate(5);
+        $residents = Resident::latest()->paginate(100);
+        $residentCount = Resident::count(); // Count the total number of records
+
+        $residentMCount = Resident::select('gender')
+        ->get()
+        ->groupBy('gender')
+        ->map(function ($gender) {
+            return $gender->count();
+        });
+        $residentFCount = Resident::select('gender')
+        ->get()
+        ->groupBy('gender')
+        ->map(function ($gender) {
+            return $gender->count();
+        });
+    
+
         
-        return view('residents.index',compact('residents'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('residents.index',compact('residents', 'residentCount','residentMCount','residentFCount'))
+                    ->with('i', (request()->input('page', 1) - 1) * 100);
     }
   
     /**
@@ -114,12 +130,12 @@ class ResidentController extends Controller
             'birthplace' => 'required',
             'birthday' => 'required|date',
             'age' => 'required|integer',
-            'gender' => 'require',
+            'gender' => 'required',
             'civil_status' => 'required',
             'citizenship' => 'required',
             'email' => 'required|email',
             'religion' => 'required',
-            'blood_type' => 'require',
+            'blood_type' => 'required',
             'voters_id' => 'required|integer',
             'presinct_no' => 'required|integer',
             'contact_number' => 'required',

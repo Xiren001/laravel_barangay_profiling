@@ -64,3 +64,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 2000); // 2000 milliseconds = 2 second
     }
 });
+
+
+ document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            var alert = document.querySelector('.alert-success');
+            if (alert) {
+                alert.remove();
+            }
+        }, 3000); // 3 seconds
+    });

@@ -13,7 +13,7 @@ class bussiness extends Model
         'tracking',
         'name',
         'address',
-        'dateb',
+        'age',
         'number',
         'date',
         'upload_file',

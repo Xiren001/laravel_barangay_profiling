@@ -27,40 +27,36 @@
       <a href="#about" style="--i: 1">About</a>
       <a href="#service" style="--i: 2">Service</a>
       <a href="#map" style="--i: 3">Map</a>
-      <a href="{{ URL('faq') }}" style="--i: 4">FAQ</a>
-      <a href="{{ URL('bussinesses') }}" style="--i: 4">track</a>
+      <a href="#track" style="--i: 4">Track</a>
+      <a href="{{ URL('faq') }}" style="--i: 5">FAQ</a>
+
     </nav>
     <div class="btn-div">
       @if (Route::has('login'))
-      <nav class="-mx-3 flex flex-1 justify-end row g-1">
-        @auth
-        <div class="log">
-          <a href="{{ url('/dashboard') }}">
-            Dashboard
-          </a>
-        </div>
-        @else
+      @auth
+      <div class="log">
+        <a href="{{ url('/dashboard') }}">
+          Dashboard
+        </a>
+      </div>
+      @else
 
-        <div class="log">
-          <a href="{{ route('login') }}">
-            Log in
-          </a>
-        </div>
+      <div class="log">
+        <a href="{{ route('login') }}">
+          Log in
+        </a>
+      </div>
 
-        @if (Route::has('register'))
-                                    <div class="log">
-                                        <a
-                                            href="{{ route('register') }}"
-                                          
-                                        >
-                                            Register
-                                        </a>
-                                        </div>
-                                    @endif
+      @if (Route::has('employee/dashboard/register'))
+      <div class="log">
+        <a href="{{ route('/employee/dashboard/register') }}">
+          Register
+        </a>
+      </div>
+      @endif
 
 
-        @endauth
-      </nav>
+      @endauth
       @endif
       <!-- <button class="btnLogin-popup btn-popup"><span>Login</span></button> -->
       <button class="btnContact-popup btn-popup"><span>Contact us</span></button>
@@ -98,7 +94,7 @@
       </span>
 
       <div class="form-box contact">
-        <h2><b>Get in touch to us</b></h2>
+        <h2><b>Get in touch with us</b></h2>
         <form id="con-form" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="b2279cbc-c09a-4c6a-b047-372d74c39efd">
           <div class="input-box">
@@ -151,7 +147,7 @@
       </div>
       <div class="p-1 div-2">
         <div class="img-fluid captain-pic">
-          <img class="cap-img" src="{{ URL('assets/images/grim.png') }}" alt="" />
+          <img class="cap-img" src="{{ URL('assets/images/cap.png') }}" alt="" />
         </div>
       </div>
     </div>
@@ -165,7 +161,9 @@
       <div>
         <div class="about-line">
           <p>
+            <h3>
             About us
+          </h3>
           <div class="line-p"></div>
           </p>
         </div>
@@ -186,24 +184,23 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="{{ URL('assets/images/hong3.jpg') }}" class="d-block w-100" alt="...">
+            <img src="{{ URL('assets/images/q.png') }}" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h2>First slide label</h2>
-              <p>Some representative placeholder content for the first slide.</p>
+              <h2>Barangay Hall</h2>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="{{ URL('assets/images/hong2.jpg') }}" class="d-block w-100" alt="...">
+            <img src="{{ URL('assets/images/w.png') }}" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h2>Second slide label</h2>
-              <p>Some representative placeholder content for the second slide.</p>
+              <h2>Interior</h2>
+              
             </div>
           </div>
           <div class="carousel-item">
-            <img src="{{ URL('assets/images/hong3.jpg') }}" class="d-block w-100" alt="...">
+            <img src="{{ URL('assets/images/e.png') }}" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h2>Third slide label</h2>
-              <p>Some representative placeholder content for the third slide.</p>
+              <h2>Night View</h2>
+             
             </div>
           </div>
         </div>
@@ -432,6 +429,40 @@
         </div>
       </div>
     </div>
+
+    <div class="container map-title" style="text-align: center;">
+      <p>Track Your Request</p>
+    </div>
+    <div id="track" class="container track-div">
+
+      <a href="{{ URL('clearances') }}">
+        <div class="div-track ">
+          <p>Brangay Certification</p>
+        </div>
+      </a>
+      <a href="{{ URL('bussinesses') }}">
+        <div class="div-track">
+          <p>Business Permit</p>
+        </div>
+      </a>
+      <a href="{{ URL('indegencys') }}">
+        <div class="div-track">
+          <p>Certificate of indigency</p>
+        </div>
+      </a>
+      <a href="{{ URL('residences') }}">
+        <div class="div-track">
+          <p>Certificate of Residency</p>
+        </div>
+      </a>
+      <a href="{{ URL('ids') }}">
+        <div class="div-track">
+          <p>Barangay ID</p>
+        </div>
+      </a>
+
+    </div>
+
   </div>
 
 

@@ -27,39 +27,51 @@
                         <span class="link-name">Personel</span>
                     </a>
                 </li>
-                <li class="list-item active">
+                <li class="list-item">
                     <a href="{{ asset('residents') }}">
                         <i class='bx bx-message-square-dots'></i>
                         <span class="link-name">Community Record</span>
                     </a>
                 </li>
                 <li class="list-item">
-                    <a href="#">
+                    <a href="{{ URL('requested-clearance') }}">
                         <i class='bx bx-certification'></i>
                         <span class="link-name">Brangay Certification</span>
                     </a>
                 </li>
                 <li class="list-item">
-                    <a href="#">
+                    <a href="{{ URL('requested-indigency') }}">
                         <i class='bx bx-receipt'></i>
                         <span class="link-name">Certificate of Indigency</span>
                     </a>
                 </li>
-                <li class="list-item">
-                    <a href="#">
+                <li class="list-item active">
+                    <a href="{{ URL('requested-business') }}">
                         <i class='bx bx-id-card'></i>
                         <span class="link-name">Business Clearance</span>
                     </a>
                 </li>
                 <li class="list-item">
-                    <a href="#">
+                    <a href="{{ URL('requested-residency') }}">
+                        <i class='bx bx-id-card'></i>
+                        <span class="link-name">Certificate of Residency</span>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="{{ URL('requested-id') }}">
+                        <i class='bx bx-id-card'></i>
+                        <span class="link-name">Barangay ID</span>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="{{ URL('blotters') }}">
                         <i class='bx bx-folder'></i>
                         <span class="link-name">Blotter List</span>
                     </a>
                 </li>
 
                 <li class="list-item">
-                    <a href="{{ URL('requested') }}">
+                    <a href="">
                         <i class='bx bx-food-menu'></i>
                         <span class="link-name">Requested Document</span>
                     </a>
@@ -70,12 +82,7 @@
                         <span class="link-name">Household Record</span>
                     </a>
                 </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class='bx bx-cog'></i>
-                        <span class="link-name">Settings</span>
-                    </a>
-                </li>
+
             </ul>
         </nav>
     </div>
@@ -84,7 +91,7 @@
 
     <div class="table-wrapper">
         <div class="table-title">
-        <div class="bg-gray-100 dark:bg-gray-900">
+            <div class="bg-gray-100 dark:bg-gray-900">
                 @include('layouts.navigation')
 
                 <!-- Page Heading -->
@@ -100,11 +107,11 @@
             <div class="roww">
                 <div style="display: flex; flex-direction:row; padding:1rem 4rem; width:100%; gap:1rem;">
                     <div class="col-sm-6">
-                        <h2>Community Record</h2>
+                        <h2>Business Clearance</h2>
                     </div>
 
                     <div class="textt" style="width: 100%;">
-                        <a href="{{ route('bussinesses.create') }}" class="btn btn-add" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add bussiness</span></a>
+                        <a href="{{ route('bussinesses.create') }}" class="btn btn-add" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Create Certificate</span></a>
                     </div>
                     <form action="" method="GET" style="display: flex; align-items:center; justify-content:center; width:100%;">
                         <div class="input-group ">
@@ -118,7 +125,7 @@
 
 
         @session('success')
-        <div class="alert alert-success" role="alert"> {{ $value }} </div>
+        <div class="alert alert-success" style="position: fixed; top:90%; left:45%;" role="alert"> {{ $value }} </div>
         @endsession
 
         <table class="table table-striped table-hover">
@@ -130,14 +137,14 @@
                             <label for="selectAll"></label>
                         </span>
                     </th>
-                    
+
                     <th>Tracking Number</th>
                     <th>Fullname</th>
                     <th>Address</th>
                     <th>Pick-up Date</th>
-                    <th>Refference</th>
+
                     <th>Status</th>
-                    
+
                     <th style="text-align: center;">Action</th>
                 </tr>
             </thead>
@@ -154,8 +161,19 @@
                     <td>{{ $bussiness->tracking }}</td>
                     <td>{{ $bussiness->name }}</td>
                     <td>{{ $bussiness->address }}</td>
-                    <td>{{ $bussiness->ref }}</td>
-                    <td>{{ $bussiness->status }}</td>
+                    <td>{{ $bussiness->date }}</td>
+                    <td>
+                        <select name="status" class="form-control @error('status') is-invalid @enderror" id="inputStatus" data-business-id="{{ $bussiness->id }}" onchange="updateStatus(this)">
+                            <option hidden value="{{ $bussiness->status }}">{{ $bussiness->status }}</option>
+                            <option value="Received">Received</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                        @error('status')
+                        <div class="form-text text-danger">{{ $message }}</div>
+                        @enderror
+                    </td>
                     <td width="200px">
                         <form action="{{ route('bussinesses.destroy',$bussiness->id) }}" method="POST">
 
@@ -183,4 +201,37 @@
 
     </div>
 </div>
+
+<script>
+    function updateStatus(selectElement) {
+        const status = selectElement.value;
+        const businessId = selectElement.getAttribute('data-business-id');
+        const url = `/bussinesses/${businessId}`;
+
+        // Make an AJAX request to update the status
+        fetch(url, {
+                method: 'PUT', // Use PUT or PATCH depending on your route
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token for security
+                },
+                body: JSON.stringify({
+                    status: status
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Status updated successfully');
+                } else {
+                    alert('Error updating status');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+</script>
+
+
 @endsection

@@ -1,0 +1,212 @@
+/* Global Styles */
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background: rgb(40, 83, 107);
+  background: linear-gradient(90deg, rgba(40, 83, 107, 1) 41%, rgba(126, 168, 190, 1) 79%, rgba(126, 168, 190, 1) 100%);
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Certificate Styles */
+#main {
+  margin: 2em;
+  border: 6px solid black;
+  position: relative;
+  padding: 0 4rem;
+  background-color: white;
+}
+
+.cert-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-div {
+  width: 25%;
+  padding: 1.5rem 0.5rem;
+}
+
+img {
+  width: 180px;
+  height: auto;
+}
+
+.text-div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-right: 11rem;
+}
+
+.brg-text {
+  font-size: 2.4em;
+}
+
+.text-p {
+  margin: 2px 0;
+  font-weight: bold;
+}
+
+.line {
+  border: 1px solid black;
+  margin: 1px 50px;
+}
+
+.font-text {
+  text-align: center;
+  padding: 2% 0;
+}
+
+.font1-text {
+  padding-left: 70px;
+}
+
+.font2-text {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  text-align: justify;
+  padding: 2rem 70px;
+  margin: 0;
+  font-size: 1em;
+}
+
+.font2-text p {
+  margin: 0;
+}
+
+.font3-text {
+  text-align: right;
+  padding-right: 80px;
+  padding-top: 2rem;
+  margin: 0;
+}
+
+.font3-text h3,
+.font3-text p {
+  margin: 5px;
+}
+
+.font4-text {
+  display: flex;
+  text-align: justify;
+  padding-left: 70px;
+  font-size: medium;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.font4-text p {
+  margin: 5px;
+}
+
+.text5,
+.text6,
+.text7 {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Form Styling */
+#cform {
+  height: 35%;
+  margin-top: 10rem;
+  padding: 2rem;
+  background: #fafafa;
+  border: 1px solid #ebebeb;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 1px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+input, select {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  background: #fafafa;
+  color: #636363;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #757575;
+}
+
+input:focus, select:focus {
+  outline: none;
+}
+
+label {
+  color: #000000;
+  font-size: 15px;
+  font-weight: normal;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+
+input:focus ~ label,
+input.used ~ label,
+select:focus ~ label,
+select.used ~ label  {
+  top: -20px;
+  transform: scale(0.75);
+  left: -2px;
+  color: #4a89dc;
+}
+
+/* Additional Styling */
+#cform p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#cform input, #cform select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#cform button {
+  background-color: #0c2d57;
+  color: white;
+  padding: 5px 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+
+#cform a, .modal-footer a{
+  font-size: 1.1em;
+}
+
+#cform button:hover {
+  background-color: #0c2d57;
+}
+
+.text2p {
+  text-align: justify;
+  margin-top: .5em; /* Adding margin to the first row of every paragraph */
+}
+
+.text2p p {
+  text-indent: 4em; /* Indent the first line of every paragraph */
+}
+
+.form-div{
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+
+}
+
+

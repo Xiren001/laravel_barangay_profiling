@@ -33,32 +33,44 @@
                     </a>
                 </li>
                 <li class="list-item">
-                    <a href="#">
-                        <i class='bx bx-certification'></i>
-                        <span class="link-name">Brangay Certification</span>
-                    </a>
-                </li>
+                            <a href="{{ URL('requested-clearance') }}">
+                                <i class='bx bx-certification'></i>
+                                <span class="link-name">Brangay Certification</span>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="{{ URL('requested-indigency') }}">
+                                <i class='bx bx-receipt'></i>
+                                <span class="link-name">Certificate of Indigency</span>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="{{ URL('requested-business') }}">
+                                <i class='bx bx-id-card'></i>
+                                <span class="link-name">Business Clearance</span>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="{{ URL('requested-residency') }}">
+                                <i class='bx bx-id-card'></i>
+                                <span class="link-name">Certificate of Residency</span>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="{{ URL('requested-id') }}">
+                                <i class='bx bx-id-card'></i>
+                                <span class="link-name">Barangay ID</span>
+                            </a>
+                        </li>
                 <li class="list-item">
-                    <a href="#">
-                        <i class='bx bx-receipt'></i>
-                        <span class="link-name">Certificate of Indigency</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class='bx bx-id-card'></i>
-                        <span class="link-name">Business Clearance</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="#">
+                    <a href="{{ URL('blotters') }}">
                         <i class='bx bx-folder'></i>
                         <span class="link-name">Blotter List</span>
                     </a>
                 </li>
 
                 <li class="list-item">
-                    <a href="{{ URL('requested') }}">
+                    <a href="">
                         <i class='bx bx-food-menu'></i>
                         <span class="link-name">Requested Document</span>
                     </a>
@@ -69,12 +81,7 @@
                         <span class="link-name">Household Record</span>
                     </a>
                 </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class='bx bx-cog'></i>
-                        <span class="link-name">Settings</span>
-                    </a>
-                </li>
+                
             </ul>
         </nav>
     </div>
@@ -117,7 +124,7 @@
 
 
         @session('success')
-        <div class="alert alert-success" role="alert"> {{ $value }} </div>
+        <div class="alert alert-success" style="position: fixed; top:90%; left:45%;" role="alert"> {{ $value }} </div>
         @endsession
 
         <table class="table table-striped table-hover">
@@ -153,7 +160,7 @@
                             <label for="checkbox1"></label>
                         </span>
                     </td>
-                    <td><img src="/images/{{ $resident->image }}" width="50px"></td>
+                    <td><img src="/images/{{ $resident->image }}" width="50px" height="50px" style="border-radius: 5px;"></td>
                     <td>{{ $resident->firstname }}</td>
                     <td>{{ $resident->middlename }}</td>
                     <td>{{ $resident->lastname }}</td>
@@ -190,21 +197,4 @@
 
     </div>
 </div>
-
-<script>
-    // Wait for the DOM content to fully load
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get the element with the ID "loggedInMessage"
-        const loggedInMessage = document.getElementById('loggedInMessage');
-
-        // Check if the element exists
-        if (loggedInMessage) {
-            // Set a timeout to hide the element after 1000 milliseconds (1 second)
-            setTimeout(function() {
-                // Hide the element by adding a CSS class that sets display to none
-                loggedInMessage.style.display = 'none';
-            }, 2000); // 2000 milliseconds = 2 second
-        }
-    });
-</script>
 @endsection

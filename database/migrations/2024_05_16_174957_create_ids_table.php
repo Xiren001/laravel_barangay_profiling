@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('tracking')->nullable();
             $table->string('name');
             $table->string('address');
-            $table->date('dateb');
+            $table->integer('age');
             $table->string('number');
             $table->date('date');
             $table->string('upload_file');

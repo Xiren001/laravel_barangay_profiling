@@ -32,32 +32,44 @@
                     </a>
                 </li>
                 <li class="list-item">
-                    <a href="#">
-                        <i class='bx bx-certification'></i>
-                        <span class="link-name">Brangay Certification</span>
-                    </a>
-                </li>
+                            <a href="{{ URL('requested-clearance') }}">
+                                <i class='bx bx-certification'></i>
+                                <span class="link-name">Brangay Certification</span>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="{{ URL('requested-indigency') }}">
+                                <i class='bx bx-receipt'></i>
+                                <span class="link-name">Certificate of Indigency</span>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="{{ URL('requested-business') }}">
+                                <i class='bx bx-id-card'></i>
+                                <span class="link-name">Business Clearance</span>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="{{ URL('requested-residency') }}">
+                                <i class='bx bx-id-card'></i>
+                                <span class="link-name">Certificate of Residency</span>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="{{ URL('requested-id') }}">
+                                <i class='bx bx-id-card'></i>
+                                <span class="link-name">Barangay ID</span>
+                            </a>
+                        </li>
                 <li class="list-item">
-                    <a href="#">
-                        <i class='bx bx-receipt'></i>
-                        <span class="link-name">Certificate of Indigency</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class='bx bx-id-card'></i>
-                        <span class="link-name">Business Clearance</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="#">
+                    <a href="{{ URL('blotters') }}">
                         <i class='bx bx-folder'></i>
                         <span class="link-name">Blotter List</span>
                     </a>
                 </li>
 
                 <li class="list-item">
-                    <a href="{{ URL('requested') }}">
+                    <a href="">
                         <i class='bx bx-food-menu'></i>
                         <span class="link-name">Requested Document</span>
                     </a>
@@ -68,12 +80,7 @@
                         <span class="link-name">Household Record</span>
                     </a>
                 </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class='bx bx-cog'></i>
-                        <span class="link-name">Settings</span>
-                    </a>
-                </li>
+                
             </ul>
         </nav>
     </div>
@@ -98,11 +105,12 @@
             <div class="roww">
                 <div style="display: flex; flex-direction:row; padding:1rem 4rem; width:100%; gap:1rem;">
                     <div class="col-sm-6">
-                        <h2>Community Record</h2>
+                        <h2>Employee Record</h2>
                     </div>
 
                     <div class="textt" style="width: 100%;">
-                        <a href="{{ route('user.create') }}" class="btn btn-add" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Resident</span></a>
+                    
+                        <a href="{{ route('user.create') }}" class="btn btn-add" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Employee</span></a>
                     </div>
                     <form action="" method="GET" style="display: flex; align-items:center; justify-content:center; width:100%;">
                         <div class="input-group ">
@@ -167,7 +175,17 @@
                     <td class="td">{{ $row->usertype }}</td>
                     <td class="td">{{ $row->email }}</td>
                     <td class="td">{{ $row->password }}</td>
-                    <td class="td">active</td>
+                    <td>
+                        <select name="status" class="form-control @error('status') is-invalid @enderror" id="inputStatus" data-business-id="{{ $row->id }}" onchange="updateStatus(this)">
+                            <option hidden value="{{ $row->status }}">{{ $row->status }}</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                           
+                        </select>
+                        @error('status')
+                        <div class="form-text text-danger">{{ $message }}</div>
+                        @enderror
+                    </td>
 
                     <td>
                         <a href="{{ route('user.edit', ['id' => $row->id]) }}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -192,37 +210,35 @@
         document.getElementById('delete_id').value = id;
         $("#modalDelete").modal('show');
     }
+
+    function updateStatus(selectElement) {
+        const status = selectElement.value;
+        const businessId = selectElement.getAttribute('data-business-id');
+        const url = `/admin/${businessId}`;
+
+        // Make an AJAX request to update the status
+        fetch(url, {
+                method: 'PUT', // Use PUT or PATCH depending on your route
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token for security
+                },
+                body: JSON.stringify({
+                    status: status
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Status updated successfully');
+                } else {
+                    alert('Error updating status');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
 </script>
 @endpush
 
-
-<div class="py popup" id="loggedInMessage">
-    <div class="max-w-7xl mx-auto ">
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 text-gray-900 dark:text-gray-100" style="height: 3.5rem;  display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;">
-                {{ __("You're logged in!") }}
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script>
-    // Wait for the DOM content to fully load
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get the element with the ID "loggedInMessage"
-        const loggedInMessage = document.getElementById('loggedInMessage');
-
-        // Check if the element exists
-        if (loggedInMessage) {
-            // Set a timeout to hide the element after 1000 milliseconds (1 second)
-            setTimeout(function() {
-                // Hide the element by adding a CSS class that sets display to none
-                loggedInMessage.style.display = 'none';
-            }, 2000); // 2000 milliseconds = 2 second
-        }
-    });
-</script>
