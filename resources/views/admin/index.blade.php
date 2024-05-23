@@ -189,7 +189,7 @@
 
                     <td>
                         <a href="{{ route('user.edit', ['id' => $row->id]) }}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <button class="delete" onClick="deleteFunction('{{ $row->id }}')"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></button>
+                        <button hidden class="delete" onClick="deleteFunction('{{ $row->id }}')"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></button>
                     </td>
                 </tr>
                 @empty
