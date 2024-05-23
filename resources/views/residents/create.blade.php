@@ -1,7 +1,7 @@
 @extends('residents.layout')
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-bottom: 2rem;">
     <div class="container card mt-5">
         <div class="container show-title p-3">
             <h2 class="card-header">Add Resident</h2>
@@ -75,6 +75,7 @@
                                     <option value="II">II</option>
                                     <option value="III">III</option>
                                     <option value="IV">IV</option>
+                                    <option value="none">none</option>
                                     <!-- Add more options as needed -->
                                 </select>
                                 @error('suffix')
@@ -275,6 +276,7 @@
                                     <option value="AB-">AB-</option>
                                     <option value="O+">O+</option>
                                     <option value="O-">O-</option>
+                                    <option value="N/A">N/A</option>
                                     <!-- Add more options as needed -->
                                 </select>
                                 @error('blood_type')
@@ -356,8 +358,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="card-footer">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a class="btn btn-primary btn-sm" href="{{ route('residents.index') }}">Cancel</a>

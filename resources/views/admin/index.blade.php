@@ -62,7 +62,7 @@
                             </a>
                         </li>
                 <li class="list-item">
-                    <a href="#">
+                    <a href="{{ URL('blotters') }}">
                         <i class='bx bx-folder'></i>
                         <span class="link-name">Blotter List</span>
                     </a>
@@ -109,6 +109,7 @@
                     </div>
 
                     <div class="textt" style="width: 100%;">
+                    
                         <a href="{{ route('user.create') }}" class="btn btn-add" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Employee</span></a>
                     </div>
                     <form action="" method="GET" style="display: flex; align-items:center; justify-content:center; width:100%;">
@@ -174,7 +175,17 @@
                     <td class="td">{{ $row->usertype }}</td>
                     <td class="td">{{ $row->email }}</td>
                     <td class="td">{{ $row->password }}</td>
-                    <td class="td">active</td>
+                    <td>
+                        <select name="status" class="form-control @error('status') is-invalid @enderror" id="inputStatus" data-business-id="{{ $row->id }}" onchange="updateStatus(this)">
+                            <option hidden value="{{ $row->status }}">{{ $row->status }}</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                           
+                        </select>
+                        @error('status')
+                        <div class="form-text text-danger">{{ $message }}</div>
+                        @enderror
+                    </td>
 
                     <td>
                         <a href="{{ route('user.edit', ['id' => $row->id]) }}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -198,6 +209,35 @@
     function deleteFunction(id) {
         document.getElementById('delete_id').value = id;
         $("#modalDelete").modal('show');
+    }
+
+    function updateStatus(selectElement) {
+        const status = selectElement.value;
+        const businessId = selectElement.getAttribute('data-business-id');
+        const url = `/admin/${businessId}`;
+
+        // Make an AJAX request to update the status
+        fetch(url, {
+                method: 'PUT', // Use PUT or PATCH depending on your route
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token for security
+                },
+                body: JSON.stringify({
+                    status: status
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Status updated successfully');
+                } else {
+                    alert('Error updating status');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }
 </script>
 @endpush

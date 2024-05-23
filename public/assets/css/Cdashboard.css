@@ -179,7 +179,7 @@ div hr {
 .men-p {
     display: flex;
     justify-content: center;
-    padding: 0;
+    padding:5px 0;
 }
 
 .invi-div {
@@ -610,15 +610,40 @@ td {
     font-size: 1em;
     font-weight: bold;
     color: #ffffff;
-    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+   
     background-color: transparent;
+    
     height: 30px;
     padding: 0 10px;
     padding-top: 5px;
     border-radius: 10px;
-    transform: translatex(-5px);
     z-index: 1;
 }
+
+.dashboard-content h6 {
+    text-transform: capitalize;
+    font-size: 1em;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: transparent;
+    padding: 0 10px;
+    z-index: 1;
+}
+
+.req-div{
+    padding: 1em 7em;
+    width: 100%;
+}
+
+.req-div h6 i{
+    font-size: 3em; 
+}
+
+.req-div span{
+    font-size: 4em;
+    color: #FFC107;
+}
+
 
 .showPhoto {
     width: 50%;
@@ -701,10 +726,6 @@ td {
     width: 100% !important;
 }
 
-
-
-
-
 .mb-3 input{
     padding: 7px;
     border-radius: 6px;
@@ -717,4 +738,32 @@ td {
 
 .mb-3 input:focus{
     border-radius: 4px;
+}
+
+
+.blotter-count{
+    height: 75vh;
+}
+
+.blotter-count ul{
+    padding: 1em;
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+}
+
+.blotter-count ul li{
+    background-color: #03A9F4;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 150px;
+    height: 120px;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }

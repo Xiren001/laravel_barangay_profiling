@@ -5,11 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class blotter extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name', 'detail', 'image'
+        'complainant',
+        'respondent',
+        'victim',
+        'incident',
+        'incident_date',
+        'status'
     ];
 }

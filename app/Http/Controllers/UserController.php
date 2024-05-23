@@ -6,18 +6,20 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $users = User::latest('id')->get();
-        return view('admin.index', compact('users'));
+        $user_type = auth()->user()->usertype; // Get the user type of the logged-in user
+        return view('admin.index', compact('users', 'user_type'));
     }
- 
+
     /**
      * Show the form for creating a new resource.
      */
@@ -26,7 +28,7 @@ class UserController extends Controller
         $title = "Add New User";
         return view('admin.add_edit_user', compact('title'));
     }
- 
+
     /**
      * Store a newly created resource in storage.
      */
@@ -40,14 +42,14 @@ class UserController extends Controller
                 'photo' => 'mimes:png,jpeg,jpg|max:2048',
             ]
         );
- 
+
         $filePath = public_path('uploads');
         $insert = new User();
         $insert->name = $request->name;
         $insert->email = $request->email;
         $insert->password = bcrypt('password');
- 
- 
+
+
         if ($request->hasfile('photo')) {
             $file = $request->file('photo');
             $file_name = time() . $file->getClientOriginalName();
@@ -55,12 +57,12 @@ class UserController extends Controller
             $file->move($filePath, $file_name);
             $insert->photo = $file_name;
         }
- 
+
         $result = $insert->save();
         Session::flash('success', 'User registered successfully');
         return redirect()->route('user.index');
     }
- 
+
     /**
      * Display the specified resource.
      */
@@ -68,7 +70,7 @@ class UserController extends Controller
     {
         //
     }
- 
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -78,11 +80,11 @@ class UserController extends Controller
         $edit = User::findOrFail($id);
         return view('admin.add_edit_user', compact('edit', 'title'));
     }
- 
+
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $id): JsonResponse
     {
         $request->validate(
             [
@@ -90,13 +92,15 @@ class UserController extends Controller
                 'email' => 'required|email|unique:users,email,' . $id,
                 'password' => 'required',
                 'photo' => 'mimes:png,jpeg,jpg|max:2048',
+                'status' => 'required|string',
             ]
         );
         $update = User::findOrFail($id);
         $update->name = $request->name;
         $update->email = $request->email;
         $update->password = $request->password;
- 
+        $update->status = $request->status;
+
         if ($request->hasfile('photo')) {
             $filePath = public_path('uploads');
             $file = $request->file('photo');
@@ -111,12 +115,13 @@ class UserController extends Controller
             }
             $update->photo = $file_name;
         }
- 
-        $result = $update->save();
+
+        $update->save();
         Session::flash('success', 'User updated successfully');
         return redirect()->route('user.index');
+        return response()->json(['success' => true, 'message' => 'Business status updated successfully']);
     }
- 
+
     /**
      * Remove the specified resource from storage.
      */

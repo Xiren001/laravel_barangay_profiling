@@ -1,0 +1,156 @@
+/* Global Styles */
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background: rgb(40, 83, 107);
+    background: linear-gradient(90deg, rgba(40, 83, 107, 1) 41%, rgba(126, 168, 190, 1) 79%, rgba(126, 168, 190, 1) 100%);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+#cform {
+    width: 35%;
+    margin: 2em;
+    padding: 3em 2em;
+    background: #fafafa;
+    border: 1px solid #ebebeb;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 1px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+#cform label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+#cform input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#cform button {
+    background-color: #0c2d57;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#cform button:hover {
+    background-color: #08418a;
+}
+
+#main {
+    width: 100%;
+}
+
+.front, .back {
+    max-width: 400px;
+    max-height: 250px ;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    margin: 25px;
+    text-align: center;
+    position: relative;
+    border: 2px solid black;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 1px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+.bg-front{
+    display: flex;
+    overflow: hidden;
+    position: absolute;
+}
+
+.front .top {
+    width: 100%;
+    height: 62%;
+ 
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.font1 {
+    color: rgb(255, 255, 255);
+    font-size: 13px;
+
+}
+.font2{
+    margin-top: -10px;
+    color: rgb(255, 255, 255);
+    font-size: 10px;
+}
+
+
+.dp {
+    width: 100px;
+    border-radius: 10%;
+    margin-top: 20px;
+}
+
+.front .bottom .font5 {
+    color: #000000;
+}
+
+.info {
+    color: #000000;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 10px 20px;
+}
+
+.gg {
+    font-size: 15px;
+    color: #000000;
+    padding-top: 70px;
+    margin-top: -60px;
+}
+.ggg{
+    margin-top: -10px;
+    font-size: 10px;
+}
+
+.p{
+    font-size: 8px;
+ 
+}
+
+.p p{
+    margin: 0;
+}
+.font5{
+    font-size: 13px;
+    margin: 2px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: sans-serif;
+}
+.back2 {
+    margin-top: -30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.code{
+    margin-top: -50px;
+    font-size: 15px;
+}
+.dpp{
+    width: 100px;
+    margin-top: 20px;
+}
+

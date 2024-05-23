@@ -14,14 +14,14 @@ function ecertificate() {
   var E = document.getElementById("E").value;
   var F = document.getElementById("F").value;
   var G = document.getElementById("G").value;
-  
+
   document.getElementById("text-1").innerHTML = A;
   document.getElementById("text-2").innerHTML = B;
   document.getElementById("text-4").innerHTML = D;
   document.getElementById("text-5").innerHTML = E;
   document.getElementById("text-6").innerHTML = F;
   document.getElementById("text-7").innerHTML = G;
-  
+
   $('#certificateModal').modal('show');
 }
 
@@ -30,9 +30,20 @@ function dcheck() {
 }
 
 function download() {
-  var body = document.getElementById("body").innerHTML;
-  var main = document.getElementById("main").innerHTML;
-  document.getElementById("body").innerHTML = main;
+  var bodyContent = document.getElementById("body").innerHTML;
+  var mainContent = document.getElementById("main").innerHTML;
+
+  var originalBody = document.body.innerHTML;
+  document.body.innerHTML = mainContent;
   window.print();
-  document.getElementById("body").innerHTML = body;
+  document.body.innerHTML = originalBody;
+
+  // Reinitialize modal after print
+  $('#certificateModal').modal('hide');
+  document.getElementById("body").innerHTML = bodyContent;
+  $('#certificateModal').modal();
+}
+
+function reloadPage() {
+  location.reload();
 }

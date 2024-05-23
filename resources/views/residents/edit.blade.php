@@ -1,7 +1,7 @@
 @extends('residents.layout')
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-bottom: 2rem;">
     <div class="container card mt-5">
         <div class="container show-title p-3">
             <h2 class="card-header">Edit Resident</h2>
@@ -75,6 +75,7 @@
                                     <option value="III" {{ $resident->suffix == 'III' ? 'selected' : '' }}>III</option>
                                     <option value="IV" {{ $resident->suffix == 'IV' ? 'selected' : '' }}>IV</option>
                                     <option value="V" {{ $resident->suffix == 'V' ? 'selected' : '' }}>V</option>
+                                    <option value="none" {{ $resident->suffix == 'none' ? 'selected' : '' }}>none</option>
                                 </select>
                                 @error('suffix')
                                 <div class="form-text text-danger">{{ $message }}</div>
@@ -283,6 +284,7 @@
                                     <option value="AB-" {{ $resident->blood_type == 'AB-' ? 'selected' : '' }}>AB-</option>
                                     <option value="O+" {{ $resident->blood_type == 'O+' ? 'selected' : '' }}>O+</option>
                                     <option value="O-" {{ $resident->blood_type == 'O-' ? 'selected' : '' }}>O-</option>
+                                    <option value="N/A" {{ $resident->blood_type == 'N/A' ? 'selected' : '' }}>N/A</option>
                                     <!-- Add more options as needed -->
                                 </select>
                                 @error('blood_type')

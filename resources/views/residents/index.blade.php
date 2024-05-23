@@ -63,7 +63,7 @@
                             </a>
                         </li>
                 <li class="list-item">
-                    <a href="#">
+                    <a href="{{ URL('blotters') }}">
                         <i class='bx bx-folder'></i>
                         <span class="link-name">Blotter List</span>
                     </a>
@@ -124,7 +124,7 @@
 
 
         @session('success')
-        <div class="alert alert-success" role="alert"> {{ $value }} </div>
+        <div class="alert alert-success" style="position: fixed; top:90%; left:45%;" role="alert"> {{ $value }} </div>
         @endsession
 
         <table class="table table-striped table-hover">

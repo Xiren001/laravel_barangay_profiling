@@ -37,8 +37,8 @@
 
 
                     <div class="form-group f-show">
-                        <strong>Date of Birth</strong><br />
-                        {{ $indegency->dateb }}
+                        <strong>Age</strong><br />
+                        {{ $indegency->age }}
                     </div>
 
 

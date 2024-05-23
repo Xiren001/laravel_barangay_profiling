@@ -95,9 +95,9 @@
                 @enderror
               </div>
               <div>
-              <label for="dateb">Date of Birth</label>
-              <input class="form-control @error('dateb') is-invalid @enderror" type="date" id="dateb" name="dateb" >
-                @error('dateb')
+              <label for="age">Age</label>
+              <input class="form-control @error('age') is-invalid @enderror" type="number" id="age" name="age" >
+                @error('age')
                 <div class="form-text text-danger">{{ $message }}</div>
                 @enderror
               </div>

@@ -47,9 +47,9 @@
         </a>
       </div>
 
-      @if (Route::has('register'))
+      @if (Route::has('employee/dashboard/register'))
       <div class="log">
-        <a href="{{ route('register') }}">
+        <a href="{{ route('/employee/dashboard/register') }}">
           Register
         </a>
       </div>
@@ -325,7 +325,7 @@
 
         <div class="serv-icon">
           <div class="icon-serv">
-            <a href="{{ URL('clearances') }}"><i class='bx bx-chevron-right'></i></a>
+            <a href="{{ URL('clearance') }}"><i class='bx bx-chevron-right'></i></a>
           </div>
         </div>
 

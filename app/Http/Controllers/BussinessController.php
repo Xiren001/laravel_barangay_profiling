@@ -24,16 +24,18 @@ class BussinessController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 100);
     }
 
-    /**
+
+ /**
      * Display a listing of the resource.
      *
-     * @return response()
+     * @return View
      */
     public function index2(): View
     {
         $bussinesses = Bussiness::latest()->paginate(100);
+        $bussinessCount = Bussiness::count(); // Count the total number of records
 
-        return view('bussinesses.index2', compact('bussinesses'))
+        return view('bussinesses.index2', compact('bussinesses', 'bussinessCount'))
             ->with('i', (request()->input('page', 1) - 1) * 100);
     }
 
@@ -58,15 +60,14 @@ class BussinessController extends Controller
             'tracking' => 'required|string',
             'name' => 'required|string',
             'address' => 'required|string',
-            'dateb' => 'required|date',
+            'age' => 'required|integer',
             'number' => 'required|string',
             'date' => 'required|date',
             'upload_file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'upload_file_sig' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'payment' => 'required|string',
-            'ref' => 'required|string',
             'bio' => 'required|string',
-            'status' => 'required|string',
+           
         ]);
 
         $input = $request->all();

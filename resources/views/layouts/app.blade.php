@@ -14,7 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link href=" {{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" />
     <script src="{{ asset('assets/js/jquery.js') }}"></script>
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Barangay Profiling</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -46,12 +46,14 @@
                         <div class="men-p">
                             <p>MENU</p>
                         </div>
+                        @if (auth()->user()->usertype === 'admin')
                         <li class="list-item">
                             <a href="{{ asset('admin') }}">
                                 <i class='bx bx-user'></i>
-                                <span class="link-name">Personel</span>
+                                <span class="link-name">Personnel</span>
                             </a>
                         </li>
+                        @endif
                         <li class="list-item">
                             <a href="{{ asset('residents') }}">
                                 <i class='bx bx-message-square-dots'></i>
@@ -72,13 +74,13 @@
                         </li>
                         <li class="list-item">
                             <a href="{{ URL('requested-business') }}">
-                                <i class='bx bx-id-card'></i>
+                            <i class='bx bx-copy-alt'></i>
                                 <span class="link-name">Business Clearance</span>
                             </a>
                         </li>
                         <li class="list-item">
                             <a href="{{ URL('requested-residency') }}">
-                                <i class='bx bx-id-card'></i>
+                            <i class='bx bx-food-menu'></i>
                                 <span class="link-name">Certificate of Residency</span>
                             </a>
                         </li>
@@ -89,25 +91,12 @@
                             </a>
                         </li>
                         <li class="list-item">
-                            <a href="#">
+                            <a href="{{ URL('blotters') }}">
                                 <i class='bx bx-folder'></i>
                                 <span class="link-name">Blotter List</span>
                             </a>
                         </li>
 
-                        <li class="list-item">
-                            <a href="">
-                                <i class='bx bx-food-menu'></i>
-                                <span class="link-name">Requested Document</span>
-                            </a>
-                        </li>
-                        <li class="list-item">
-                            <a href="#">
-                                <i class='bx bx-building-house'></i>
-                                <span class="link-name">Household Record</span>
-                            </a>
-                        </li>
-                        
                     </ul>
                 </nav>
             </div>
@@ -128,31 +117,98 @@
                 </div>
                 <div class="contents-div">
                     <div class="dashboard-content">
-                        <p>POPULATION</p>
+                        <div style="display: flex; flex-direction:column;">
+                            <p>POPULATION</p>
+                            <div style="display: flex; padding:1em;flex-wrap: wrap; width:100%; height:100%; gap:1rem;">
+                                <div class="req-div">
+                                    <h6><i class='bx bx-user'></i><span>{{ $residentCount }} </span></h6>
+                                    
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="dashboard-content">
-                        <p>MALE</p>
+                        <div style="display: flex; flex-direction:column;">
+                            <p>MALE</p>
+                            <div style="display: flex; padding:1em;flex-wrap: wrap; width:100%; height:100%; gap:1rem;">
+                                <div class="req-div">
+                                    <h6><i class='bx bx-male' ></i><span>{{ $residentMCount }} </span></h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="dashboard-content">
-                        <p>FEMALE</p>
+                        <div style="display: flex; flex-direction:column;">
+                            <p>FEMALE</p>
+                            <div style="display: flex; padding:1em;flex-wrap: wrap; width:100%; height:100%; gap:1rem;">
+                                <div class="req-div">
+                                    <h6><i class='bx bx-female' ></i><span>{{ $residentFCount }}</span></h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="dashboard-content">
-                        <p>VOTERS</p>
+                        <div style="display: flex; flex-direction:column;">
+                            <p>BARANGAY CLEARANCE</p>
+                            <div style="display: flex; padding:1em;flex-wrap: wrap; width:100%; height:100%; gap:1rem;">
+                                <div class="req-div">
+                                    <h6><i class='bx bx-certification' > </i> <span>{{ $clearanceCount }}</span></h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="dashboard-content">
-                        <p>NON-VOTERS</p>
+
+                        <div style="display: flex; flex-direction:column;">
+                            <p>BUSINESS PERMIT</p>
+                            <div style="display: flex; padding:1em;flex-wrap: wrap; width:100%; height:100%; gap:1rem;">
+
+                                <div class="req-div">
+                                    <h6><i class='bx bx-copy-alt'></i> <span>{{ $bussinessCount }}</span></h6>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="dashboard-content">
-                        <p>PRECINT</p>
+                        <div style="display: flex; flex-direction:column;">
+                            <p>BARANGAY ID</p>
+                            <div style="display: flex; padding:1em;flex-wrap: wrap; width:100%; height:100%; gap:1rem;">
+                                <div class="req-div">
+                                    <h6><i class='bx bx-id-card'></i> <span>{{ $idCount }}</span></h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="dashboard-content">
-                        <p>PUROK</p>
+                        <div style="display: flex; flex-direction:column;">
+                            <p>CERTIFICATE OF INDIGENCY</p>
+                            <div style="display: flex; padding:1em;flex-wrap: wrap; width:100%; height:100%; gap:1rem;">
+                                <div class="req-div">
+                                    <h6><i class='bx bx-receipt'></i> <span>{{ $indegencysCount }}</span></h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="dashboard-content">
-                        <p>BLOTTER</p>
+                        <div style="display: flex; flex-direction:column;">
+                            <p>CERTIFICATE OF RESIDENCY</p>
+                            <div style="display: flex; padding:1em;flex-wrap: wrap; width:100%; height:100%; gap:1rem;">
+                                <div class="req-div">
+                                    <h6><i class='bx bx-food-menu'> </i><span>{{ $residencesCount }}</span></h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="dashboard-content">
-                        <p>REVENUE</p>
+                        <div style="display: flex; flex-direction:column;">
+                            <p>BLOTTER</p>
+                            <div style="display: flex; padding:1em;flex-wrap: wrap; width:100%; height:100%; gap:1rem;">
+                                <div class="req-div">
+                                    <h6><i class='bx bx-folder'> </i> <span>{{ $statusACounts }}</span></h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

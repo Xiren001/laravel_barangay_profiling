@@ -1,6 +1,6 @@
 @extends('residents.layout')
 @section('content')
-<div class="container">
+<div class="container" style="margin-bottom: 2rem;">
     <div class="container card mt-5">
         <div class="container show-title p-3">
             <h2 class="card-header">Show Resident</h2>

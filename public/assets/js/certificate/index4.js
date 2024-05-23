@@ -30,11 +30,21 @@ function check() {
     download();
   }
   
-  function download() {
-    var body = document.getElementById("body").innerHTML;
-    var main = document.getElementById("main").innerHTML;
-    document.getElementById("body").innerHTML = main;
-    window.print();
-    document.getElementById("body").innerHTML = body;
-  }
-  
+function download() {
+  var bodyContent = document.getElementById("body").innerHTML;
+  var mainContent = document.getElementById("main").innerHTML;
+
+  var originalBody = document.body.innerHTML;
+  document.body.innerHTML = mainContent;
+  window.print();
+  document.body.innerHTML = originalBody;
+
+  // Reinitialize modal after print
+  $('#certificateModal').modal('hide');
+  document.getElementById("body").innerHTML = bodyContent;
+  $('#certificateModal').modal();
+}
+
+function reloadPage() {
+  location.reload();
+}

@@ -10,7 +10,7 @@ use App\Http\Controllers\ClearanceController;
 use App\Http\Controllers\IndegencyController;
 use App\Http\Controllers\ResidenceController;
 use App\Http\Controllers\IdController;
-
+use App\Http\Controllers\BlotterController;
 
 
 Route::get('/', function () {
@@ -33,12 +33,11 @@ Route::get('/faq', function () {
     return view('PTD/faq');
 });
 
-
 Route::get('/bussiness', function () {
     return view('cert/bussiness');
 });
 
-Route::get('/clearances', function () {
+Route::get('/clearance', function () {
     return view('cert/clearance');
 });
 
@@ -81,8 +80,9 @@ Route::post('/delete', [UserController::class, 'destroy'])->name('user.delete');
 });
 
 
-Route::resource('products', ProductController::class);
+
 Route::resource('residents', ResidentController::class);
+Route::resource('blotters', BlotterController::class);
 
 Route::resource('bussinesses', BussinessController::class);
 Route::resource('clearances', ClearanceController::class);
@@ -97,6 +97,7 @@ Route::get('requested-residency', [ResidenceController::class, 'index2']);
 Route::get('requested-id', [IdController::class, 'index2']);
 
 
+
 Route::put('/bussinesses/{bussiness}', [BussinessController::class, 'update'])->name('bussinesses.update');
 Route::put('/clearances/{clearance}', [ClearanceController::class, 'update'])->name('clearances.update');
 Route::put('/indegencys/{indegency}', [IndegencyController::class, 'update'])->name('indegencys.update');
@@ -104,9 +105,17 @@ Route::put('/residences/{residence}', [ResidenceController::class, 'update'])->n
 Route::put('/ids/{id}', [IdController::class, 'update'])->name('ids.update');
 
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
