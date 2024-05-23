@@ -147,7 +147,7 @@
       </div>
       <div class="p-1 div-2">
         <div class="img-fluid captain-pic">
-          <img class="cap-img" src="{{ URL('assets/images/grim.png') }}" alt="" />
+          <img class="cap-img" src="{{ URL('assets/images/cap.png') }}" alt="" />
         </div>
       </div>
     </div>
@@ -184,24 +184,23 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="{{ URL('assets/images/hong3.jpg') }}" class="d-block w-100" alt="...">
+            <img src="{{ URL('assets/images/q.png') }}" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h2>First slide label</h2>
-              <p>Some representative placeholder content for the first slide.</p>
+              <h2>Barangay Hall</h2>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="{{ URL('assets/images/hong2.jpg') }}" class="d-block w-100" alt="...">
+            <img src="{{ URL('assets/images/w.png') }}" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h2>Second slide label</h2>
-              <p>Some representative placeholder content for the second slide.</p>
+              <h2>Interior</h2>
+              
             </div>
           </div>
           <div class="carousel-item">
-            <img src="{{ URL('assets/images/hong3.jpg') }}" class="d-block w-100" alt="...">
+            <img src="{{ URL('assets/images/e.png') }}" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h2>Third slide label</h2>
-              <p>Some representative placeholder content for the third slide.</p>
+              <h2>Night View</h2>
+             
             </div>
           </div>
         </div>
